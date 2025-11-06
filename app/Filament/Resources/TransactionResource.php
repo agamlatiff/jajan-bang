@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Resources\TransactionItemsResource\Pages\ListTransactionItems;
 use App\Filament\Resources\TransactionResource\Pages;
 use App\Filament\Resources\TransactionResource\RelationManagers;
 use App\Models\Transaction;
@@ -9,6 +10,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -63,36 +65,50 @@ class TransactionResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('code')
+                    ->label("Transaction Code")
                     ->searchable(),
                 Tables\Columns\TextColumn::make('name')
+                    ->label("Customer Name")
                     ->searchable(),
                 Tables\Columns\TextColumn::make('phone')
+                    ->label("Phone Number")
                     ->searchable(),
+                Tables\Columns\ImageColumn::make('barcodes.image')
+                    ->label("Barcode"),
+                Tables\Columns\TextColumn::make('payment_method')
+                    ->label("Payment Method")
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('payment_status')
+                    ->label("Payment Status")
+                    ->badge()
+                    ->colors([
+                        "success" => fn($state): bool => in_array($state, ["SUCCESS", "PAID", "SETTLED"]),
+                        "warning" => fn($state): bool => $state === "PENDING",
+                        "danger" => fn($state): bool => in_array($state, ["FAILED", "EXPIRED"])
+                    ]),
                 Tables\Columns\TextColumn::make('external_id')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('checkout_link')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('barcodes_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('payment_method')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('payment_status')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('subtotal')
+                    ->label("Subtotal")
                     ->numeric()
-                    ->sortable(),
+                    ->money("IDR"),
                 Tables\Columns\TextColumn::make('ppn')
+                    ->label("PPN")
                     ->numeric()
-                    ->sortable(),
+                    ->money("IDR"),
                 Tables\Columns\TextColumn::make('total')
+                    ->label("Total")
                     ->numeric()
-                    ->sortable(),
+                    ->money("IDR"),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label("Created At")
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label("Updated At")
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -102,11 +118,15 @@ class TransactionResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Action::make("See transaction")
+                ->color("success")
+                ->url(
+                    fn (Transaction $record) : string => static::getUrl("transaction-items.index",[
+                        "parent" => $record->id
+                    ])
+                )
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
             ]);
     }
 
@@ -123,6 +143,7 @@ class TransactionResource extends Resource
             'index' => Pages\ListTransactions::route('/'),
             'create' => Pages\CreateTransaction::route('/create'),
             'edit' => Pages\EditTransaction::route('/{record}/edit'),
+            "transaction-items.index" => ListTransactionItems::route("/{record}/items")
         ];
     }
 }
