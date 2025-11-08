@@ -3,15 +3,12 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\FoodsResource\Pages;
-use App\Filament\Resources\FoodsResource\RelationManagers;
 use App\Models\Foods;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class FoodsResource extends Resource
 {
@@ -86,8 +83,8 @@ class FoodsResource extends Resource
                     ->sortable()->money("IDR"),
                 Tables\Columns\TextColumn::make('percent')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('is_promo')
-                    ->sortable(),
+                Tables\Columns\IconColumn::make('is_promo')
+                    ->boolean(),
                 Tables\Columns\TextColumn::make('categories.name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')

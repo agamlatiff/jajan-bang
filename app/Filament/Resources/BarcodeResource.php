@@ -3,21 +3,25 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\BarcodeResource\Pages;
-use App\Filament\Resources\BarcodeResource\RelationManagers;
 use App\Models\Barcode;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Database\Eloquent\Model;
 
 class BarcodeResource extends Resource
 {
     protected static ?string $model = Barcode::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = "heroicon-o-qr-code";
+    protected static ?string $navigationLabel = 'QR Codes';
+
+    public static function canEdit(Model $record): bool
+    {
+        return false;
+    }
 
     public static function form(Form $form): Form
     {
@@ -45,6 +49,7 @@ class BarcodeResource extends Resource
                 // Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('qr_value')
                     ->searchable(),
+                Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('users.name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
