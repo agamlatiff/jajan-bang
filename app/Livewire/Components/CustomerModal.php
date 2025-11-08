@@ -41,3 +41,4 @@ class CustomerModal extends Component
         return view('livewire.customer-modal');
     }
 }
+ 
