@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string("table_number");
             $table->string("image");
             $table->string("qr_value");
-            $table->integer("users_id")->constrained("users")->cascadeOnDelete();
+            $table->foreignId("users_id")->constrained("users")->cascadeOnDelete();
             $table->timestamps();
         });
     }
