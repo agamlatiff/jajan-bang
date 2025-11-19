@@ -29,6 +29,7 @@ class FoodsResource extends Resource
                 Forms\Components\FileUpload::make('image')
                     ->image()
                     ->directory("foods")
+                    ->disk("public")
                     ->required()
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('price')
@@ -76,7 +77,7 @@ class FoodsResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\ImageColumn::make('image')->disk("public"),
                 Tables\Columns\TextColumn::make('price')
                     ->sortable()->money("IDR"),
                 Tables\Columns\TextColumn::make('price_afterdiscount')
