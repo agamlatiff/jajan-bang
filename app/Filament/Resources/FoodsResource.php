@@ -29,7 +29,14 @@ class FoodsResource extends Resource
                 Forms\Components\FileUpload::make('image')
                     ->image()
                     ->directory("foods")
+                    ->disk("public")
                     ->required()
+                    ->maxSize(2048) // 2MB in KB
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                    ->helperText('Format: JPG, PNG, WEBP. Maksimal ukuran file: 2 MB')
+                    ->validationMessages([
+                        'max' => 'Ukuran file terlalu besar! Maksimal 2 MB.',
+                    ])
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('price')
                     ->required()
@@ -65,8 +72,7 @@ class FoodsResource extends Resource
                 Forms\Components\Select::make('categories_id')
                     ->relationship("categories", "name")
                     ->required()
-                    ->columnSpanFull()
-                ,
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -76,7 +82,7 @@ class FoodsResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\ImageColumn::make('image')->disk("public"),
                 Tables\Columns\TextColumn::make('price')
                     ->sortable()->money("IDR"),
                 Tables\Columns\TextColumn::make('price_afterdiscount')

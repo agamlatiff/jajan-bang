@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\QRController;
-use App\Http\Controllers\CheckTableNumber;
+use App\Http\Middleware\CheckTableNumber;
 use App\Livewire\Pages\AllFoodPage;
 use App\Livewire\Pages\CartPage;
 use App\Livewire\Pages\CheckoutPage;

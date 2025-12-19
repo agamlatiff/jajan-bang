@@ -11,10 +11,10 @@
                     <img
                         src="{{ asset("assets/images/logo.png") }}"
                         class="scale-[0.9]"
-                        alt="MyFOOD logo"
+                        alt="JajanBang logo"
                     />
                     <span class="text-lg font-semibold text-primary-50">
-                        MyFOOD
+                        JajanBang
                     </span>
                 </div>
                 <div

@@ -49,7 +49,7 @@ class BarcodeResource extends Resource
                 // Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('qr_value')
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\ImageColumn::make('image')->disk("public"),
                 Tables\Columns\TextColumn::make('users.name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
