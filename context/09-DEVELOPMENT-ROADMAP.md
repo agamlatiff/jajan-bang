@@ -150,9 +150,9 @@
 
 - [ ] Swipe gestures
 - [ ] Pull-to-refresh
-- [ ] Offline indicator
-- [ ] PWA manifest
-- [ ] Service worker
+- [x] Offline indicator (offline.html page) ✅
+- [x] PWA manifest ✅
+- [x] Service worker ✅
 
 **Timeline**: 1-2 weeks  
 **Priority**: HIGH
