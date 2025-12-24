@@ -14,6 +14,7 @@ use App\Livewire\Pages\HomePage;
 
 use App\Livewire\Pages\PaymentFailurePage;
 use App\Livewire\Pages\PaymentSuccessPage;
+use App\Livewire\Pages\OrderTrackingPage;
 use App\Livewire\Pages\ScanPage;
 use Livewire\Livewire;
 
@@ -44,6 +45,9 @@ Route::middleware(CheckTableNumber::class)->controller(TransactionController::cl
 });
 
 Route::post("/payment/webhook", [TransactionController::class, "handleWebhook"])->name("payment.webhook");
+
+// Order Tracking (accessible without table number)
+Route::get("/track-order/{invoice?}", OrderTrackingPage::class)->name("order.track");
 
 Route::controller(QRController::class)->group(function () {
     Route::post("/store-qr-result", "storeResult")->name("product.scan.store");
