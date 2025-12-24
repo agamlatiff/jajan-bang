@@ -31,11 +31,11 @@ Route::middleware(CheckTableNumber::class)->group(function () {
     Route::get("/food/{id}", DetailPage::class)->name("product.detail");
 });
 
-Route::middleware(CheckTableNumber::class)->controller(TransactionController::class)->group(function () {
+Route::middleware([CheckTableNumber::class])->controller(TransactionController::class)->group(function () {
     Route::get("/cart", CartPage::class)->name("payment.cart");
-    Route::get("/checkout", CheckoutPage::class)->name("payment.checkout");
+    Route::get("/checkout", CheckoutPage::class)->middleware('cart.verify')->name("payment.checkout");
 
-    Route::middleware("throttle:10,1")->post("/payment", "handlePayment")->name("payment");
+    Route::middleware(["throttle:5,1", "cart.verify"])->post("/payment", "handlePayment")->name("payment");
     Route::get("/payment", function () {
         abort(404);
     });
