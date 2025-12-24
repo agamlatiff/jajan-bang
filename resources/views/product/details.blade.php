@@ -58,14 +58,34 @@
 
         <div class="mt-6 flex items-center justify-between">
             <button wire:click="addToCart"
-                class="flex items-center gap-2 rounded-full bg-primary-10 px-6 py-2 font-semibold text-primary-50">
-                <img src="{{ asset("assets/icons/cart-active-icon.svg") }}" alt="Cart" />
-                <span>Cart</span>
+                wire:loading.attr="disabled"
+                class="flex w-fit items-center gap-2 rounded-full bg-primary-50 px-4 py-3 font-semibold text-white shadow transition-all hover:scale-105 hover:shadow-lg active:scale-95 disabled:opacity-70">
+                <span wire:loading.remove wire:target="addToCart">
+                    <img src="{{ asset("assets/icons/cart-active-icon.svg") }}" alt="Cart" />
+                </span>
+                <span wire:loading wire:target="addToCart">
+                    <svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                </span>
+                <span wire:loading.remove wire:target="addToCart">Tambah ke Keranjang</span>
+                <span wire:loading wire:target="addToCart">Menambahkan...</span>
             </button>
             <button wire:click="orderNow"
-                class="flex items-center gap-2 rounded-full bg-primary-50 px-6 py-2 font-semibold text-black-10">
-                <span>Pesan Sekarang</span>
-                <img src="{{ asset("assets/icons/arrow-right-white-icon.svg") }}" alt="Cart" />
+                wire:loading.attr="disabled"
+                class="flex w-full items-center justify-center gap-2 rounded-full bg-primary-60 px-4 py-3 font-semibold text-white shadow transition-all hover:scale-105 hover:shadow-lg active:scale-95 disabled:opacity-70">
+                <span wire:loading wire:target="orderNow">
+                    <svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                </span>
+                <span wire:loading.remove wire:target="orderNow">Pesan Sekarang</span>
+                <span wire:loading wire:target="orderNow">Memproses...</span>
+                <span wire:loading.remove wire:target="orderNow">
+                    <img src="{{ asset("assets/icons/arrow-right-white-icon.svg") }}" alt="Cart" />
+                </span>
             </button>
         </div>
     </div>
