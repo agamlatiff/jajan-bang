@@ -173,7 +173,7 @@
 - [x] Dedicated kitchen view (Livewire component) ✅
 - [x] Order queue display with filters ✅
 - [x] Mark orders as completed ✅
-- [ ] Order timer/alerts
+- [x] Order timer/alerts (color-coded) ✅
 - [ ] Print receipt functionality
 
 ### Order Workflow
