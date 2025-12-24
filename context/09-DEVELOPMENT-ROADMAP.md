@@ -253,24 +253,30 @@
 
 ### Test Setup
 
-- [ ] Configure PHPUnit
-- [ ] Setup test database
-- [ ] Create base test cases
+- [x] Configure PHPUnit (already configured) ✅
+- [x] Setup test database (SQLite in-memory) ✅
+- [x] Create base test cases ✅
 
 ### Model Tests
 
-- [ ] Foods model tests
+- [x] Foods model tests ✅
 - [ ] Transaction model tests
 - [ ] Category model tests
 - [ ] User model tests
 
 ### Feature Tests
 
+- [x] Page access tests ✅
 - [ ] Add to cart test
 - [ ] Checkout process test
 - [ ] Payment callback test
 - [ ] QR generation test
 - [ ] Search functionality test
+
+### Unit Tests
+
+- [x] OrderStatus enum tests ✅
+- [x] Sanitizer helper tests ✅
 
 ### CI/CD
 
