@@ -35,8 +35,8 @@
 
 #### Frontend Validation Missing
 
-- ❌ Phone number format not validated
-- ❌ Customer name allows special characters
+- [x] Phone number format validated (Indonesian format) ✅
+- [x] Customer name validation (letters and spaces only) ✅
 - ❌ Quantity can be manipulated in dev tools
 - ❌ Price tampering possible (session-based)
 
