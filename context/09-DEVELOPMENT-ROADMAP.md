@@ -95,9 +95,10 @@
 
 ### 6. Analytics & Reporting ⚠️ MEDIUM PRIORITY
 
-- ❌ Admin dashboard has no widgets
-- ❌ Can't see daily revenue
-- ❌ No best-seller charts
+- [x] Admin dashboard widgets (StatsOverview) ✅
+- [x] Daily/monthly revenue display ✅
+- [x] Best-seller menu widget ✅
+- [x] Recent orders widget ✅
 - ❌ Can't export reports
 
 ---
