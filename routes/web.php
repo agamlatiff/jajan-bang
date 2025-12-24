@@ -15,6 +15,7 @@ use App\Livewire\Pages\HomePage;
 use App\Livewire\Pages\PaymentFailurePage;
 use App\Livewire\Pages\PaymentSuccessPage;
 use App\Livewire\Pages\OrderTrackingPage;
+use App\Livewire\Pages\KitchenDashboard;
 use App\Livewire\Pages\ScanPage;
 use Livewire\Livewire;
 
@@ -48,6 +49,9 @@ Route::post("/payment/webhook", [TransactionController::class, "handleWebhook"])
 
 // Order Tracking (accessible without table number)
 Route::get("/track-order/{invoice?}", OrderTrackingPage::class)->name("order.track");
+
+// Kitchen Dashboard (staff only - TODO: add auth middleware)
+Route::get("/kitchen", KitchenDashboard::class)->name("kitchen.dashboard");
 
 Route::controller(QRController::class)->group(function () {
     Route::post("/store-qr-result", "storeResult")->name("product.scan.store");
