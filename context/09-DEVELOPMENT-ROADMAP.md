@@ -225,8 +225,8 @@
 ### Database
 
 - [ ] Add eager loading to fix N+1 queries
-- [ ] Add database indexes
-- [ ] Implement query result caching (5 mins for menu)
+- [x] Add database indexes ✅
+- [x] Implement query result caching (5 mins for promo/favorites) ✅
 - [ ] Optimize aggregate queries
 
 ### Caching
