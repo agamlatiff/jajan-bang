@@ -47,7 +47,7 @@ class FoodSeeder extends Seeder
       [
         'name' => 'Soto Ayam',
         'description' => 'Soto ayam kuning dengan suwiran ayam, telur, dan kentang. Disajikan dengan nasi dan emping.',
-        'image' => 'https://images.unsplash.com/photo-1547928576-b822bc410f7c?w=400',
+        'image' => 'https://images.unsplash.com/photo-1604908815574-c433e10b661c?w=400',
         'price' => 18000,
         'price_afterdiscount' => null,
         'percent' => null,

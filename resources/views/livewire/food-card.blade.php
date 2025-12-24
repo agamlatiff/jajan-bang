@@ -25,7 +25,7 @@
         @endif
 
         <img
-            src="{{ Storage::url($data->image) }}"
+            src="{{ str_starts_with($data->image, 'http') ? $data->image : Storage::url($data->image) }}"
             alt="{{ $data->name }}"
             class="aspect-square w-full rounded-xl object-cover"
         />

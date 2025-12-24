@@ -44,7 +44,7 @@
                     @endif
 
                     <img
-                        src="{{ Storage::url($item["image"]) }}"
+                        src="{{ str_starts_with($item["image"], 'http') ? $item["image"] : Storage::url($item["image"]) }}"
                         alt="{{ $item["name"] }}"
                         class="ml-2 h-16 w-16 rounded-lg"
                     />

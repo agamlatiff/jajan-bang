@@ -2,8 +2,10 @@
     <livewire:components.page-title-nav :title="'Food Detail'" wire:key="{{ str()->random(50) }}" :hasBack="true"
         :hasFilter="false"></livewire:components.page-title-nav>
 
-    <div>
-        <img src="{{ Storage::url($food->image) }}" alt="{{ $food->name }}" />
+    <div class="w-full h-60 overflow-hidden rounded-2xl">
+        <img src="{{ str_starts_with($food->image, 'http') ? $food->image : Storage::url($food->image) }}" 
+             alt="{{ $food->name }}" 
+             class="w-full h-full object-cover" />
     </div>
     <div class="relative z-20 -mt-12 flex-grow overflow-hidden rounded-t-3xl bg-white p-4 font-poppins">
         <div class="flex items-center justify-between">

@@ -33,10 +33,10 @@ class TransactionController extends Controller
         if ($action === 'pay') {
             return $this->processPayment($request);
         }
-    
+
         if ($action === 'continue') {
             $externalId = session('external_id');
-            
+
             if (empty($externalId)) {
                 return view('payment.failure');
             }
@@ -45,7 +45,7 @@ class TransactionController extends Controller
             $transaction = Transaction::where('external_id', $externalId)->first();
             return redirect($transaction->checkout_link);
         }
-    
+
         abort(400, 'Invalid action.');
     }
 
@@ -55,7 +55,7 @@ class TransactionController extends Controller
 
         $sessionToken = session('payment_token');
         $requestToken = $request->input('token');
-    
+
         if ($sessionToken !== $requestToken) {
             return redirect()->route('payment.failure');
         }
@@ -74,32 +74,38 @@ class TransactionController extends Controller
 
         $tableNumberId = Barcode::where('table_number', $tableNumber)->first();
 
+        if (!$tableNumberId) {
+            Log::error('Table number not found in database', ['table_number' => $tableNumber]);
+            return redirect()->route('payment.failure');
+        }
+
         $transactionCode = 'TRX_' . mt_rand(100000, 999999);
 
         try {
             $subTotal = 0;
             $items = collect($cartItems)
-            ->map(function ($item) use (&$subTotal) {
-                $price = isset($item['price_afterdiscount']) ? $item['price_afterdiscount'] : $item['price'];
-        
-                $category = Category::find($item['categories_id'])->name;
-        
-                $foodSubtotal = $price * $item['quantity'];
-                $subTotal += $foodSubtotal;
-        
-                $url = route('product.detail', ['id' => $item['id']]);
-        
-                return [
-                    'name' => $item['name'],
-                    'quantity' => $item['quantity'],
-                    'price' => (int) $price,
-                    'category' => $category,
-                    'url' => $url,
-                ];
-            })
-            ->values()
-            ->toArray();
-        
+                ->map(function ($item) use (&$subTotal) {
+                    $price = isset($item['price_afterdiscount']) ? $item['price_afterdiscount'] : $item['price'];
+
+                    $categoryModel = Category::find($item['categories_id']);
+                    $category = $categoryModel ? $categoryModel->name : 'Unknown';
+
+                    $foodSubtotal = $price * $item['quantity'];
+                    $subTotal += $foodSubtotal;
+
+                    $url = route('product.detail', ['id' => $item['id']]);
+
+                    return [
+                        'name' => $item['name'],
+                        'quantity' => $item['quantity'],
+                        'price' => (int) $price,
+                        'category' => $category,
+                        'url' => $url,
+                    ];
+                })
+                ->values()
+                ->toArray();
+
 
             $ppn = 0.11 * $subTotal;
 
@@ -110,7 +116,7 @@ class TransactionController extends Controller
                 Nomor Telepon: {$phone}<br>
                 Kode Transaksi: {$transactionCode}<br>
                 END;
-            
+
             $createInvoiceRequest = new CreateInvoiceRequest([
                 'external_id' => $uuid,
                 'amount' => $subTotal + $ppn,
@@ -133,7 +139,7 @@ class TransactionController extends Controller
                 ],
                 "customer_notification_preference" => [
                     "invoice_paid" => [
-                      "whatsapp",
+                        "whatsapp",
                     ]
                 ],
             ]);
@@ -168,15 +174,14 @@ class TransactionController extends Controller
 
             session(['external_id' => $uuid]);
             session(['has_unpaid_transaction' => true]);
-            
-            return redirect($invoice['invoice_url']);
 
+            return redirect($invoice['invoice_url']);
         } catch (\Exception $e) {
             Log::error('Failed to create invoice', [
                 'message' => $e->getMessage(),
                 'trace' => $e->getTraceAsString(),
             ]);
-        
+
             return view('payment.failure');
         }
     }
@@ -207,13 +212,12 @@ class TransactionController extends Controller
             return response()->json([
                 'success' => true
             ]);
-
         } catch (\Exception $e) {
             Log::error('Failed to get invoice', [
                 'message' => $e->getMessage(),
                 'trace' => $e->getTraceAsString(),
             ]);
-        
+
             return view('payment.failure');
         }
     }
@@ -235,35 +239,33 @@ class TransactionController extends Controller
             $external_id = $data['external_id'];
             $status = $data['status'];
             $payment_method = $data['payment_method'];
-     
-     
+
+
             $transaction = Transaction::where('external_id', $external_id)->first();
             $transaction->payment_status = $status;
             $transaction->payment_method = $payment_method;
             $transaction->updated_at = $data['updated'];
             $transaction->save();
-    
+
             $this->clearSession();
 
-                
+
             return response()->json([
                 'code' => 200,
                 'message' => 'Webhook received',
                 'status' => $status,
                 'payment_method' => $payment_method,
             ]);
-
         } catch (\Exception $e) {
             Log::error('Failed to handle webhook', [
                 'message' => $e->getMessage(),
                 'trace' => $e->getTraceAsString(),
             ]);
-        
+
             return response()->json([
                 'message' => 'Failed to handle webhook.',
             ], 500);
         }
-
     }
 
     public function clearSession()

@@ -9,6 +9,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Storage;
 
 class FoodsResource extends Resource
 {
@@ -37,6 +38,7 @@ class FoodsResource extends Resource
                     ->validationMessages([
                         'max' => 'Ukuran file terlalu besar! Maksimal 2 MB.',
                     ])
+
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('price')
                     ->required()
@@ -82,7 +84,12 @@ class FoodsResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('image')->disk("public"),
+                Tables\Columns\ImageColumn::make('image')
+                    ->getStateUsing(
+                        fn($record) => str_starts_with($record->image, 'http')
+                            ? $record->image
+                            : Storage::url($record->image)
+                    ),
                 Tables\Columns\TextColumn::make('price')
                     ->sortable()->money("IDR"),
                 Tables\Columns\TextColumn::make('price_afterdiscount')

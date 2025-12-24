@@ -35,4 +35,18 @@ class QRController extends Controller
             }
         }
     }
+
+    public function download($id)
+    {
+        $barcode = Barcode::findOrFail($id);
+        $filePath = storage_path('app/public/' . $barcode->image);
+
+        if (file_exists($filePath)) {
+            return response()->download($filePath, $barcode->table_number . '.svg', [
+                'Content-Type' => 'image/svg+xml',
+            ]);
+        }
+
+        abort(404, 'QR code file not found.');
+    }
 }

@@ -10,6 +10,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class BarcodeResource extends Resource
 {
@@ -46,10 +47,14 @@ class BarcodeResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('table_number')
                     ->searchable(),
-                // Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('qr_value')
-                    ->searchable(),
-                Tables\Columns\ImageColumn::make('image')->disk("public"),
+                    ->searchable()
+                    ->copyable()
+                    ->copyMessage('QR Value copied!')
+                    ->limit(30),
+                Tables\Columns\ViewColumn::make('image')
+                    ->label('QR Code')
+                    ->view('filament.tables.columns.qr-image'),
                 Tables\Columns\TextColumn::make('users.name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
@@ -66,16 +71,11 @@ class BarcodeResource extends Resource
             ])
             ->actions([
                 Tables\Actions\Action::make("download")
-                    ->label("Download QR Code")
+                    ->label("Download")
                     ->icon("heroicon-o-arrow-down-tray")
-                    ->action(function ($record) {
-                        $filePath = storage_path("app/public/" . $record->image);
-                        if (file_exists($filePath)) {
-                            return response()->download($filePath);
-                        }
-
-                        session()->flash("error", "QR code image not found.");
-                    }),
+                    ->url(fn($record) => route('qr.download', $record->id))
+                    ->openUrlInNewTab(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
