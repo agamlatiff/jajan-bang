@@ -174,8 +174,8 @@ $table->index(['payment_status', 'created_at']);
 ### Real-Time Order Tracking
 
 - [ ] Install Pusher/Laravel WebSockets
-- [ ] Create order status events
-- [ ] Build customer order tracking page
+- [x] Create order status enum system ✅
+- [x] Build customer order tracking page ✅
 - [ ] Kitchen notification system
 - [ ] Email notifications
 
