@@ -125,10 +125,26 @@
                                 @endswitch
                             </div>
                             
-                            <!-- Time Info -->
-                            <p class="text-center text-xs text-gray-400 mt-2">
-                                {{ $order->created_at->diffForHumans() }}
-                            </p>
+                            <!-- Order Timer with Alert -->
+                            @php
+                                $minutesAgo = $order->created_at->diffInMinutes(now());
+                                $timerColor = match(true) {
+                                    $minutesAgo >= 15 => 'text-red-500 bg-red-50',
+                                    $minutesAgo >= 10 => 'text-orange-500 bg-orange-50',
+                                    $minutesAgo >= 5 => 'text-yellow-600 bg-yellow-50',
+                                    default => 'text-green-500 bg-green-50'
+                                };
+                                $isUrgent = $minutesAgo >= 10;
+                            @endphp
+                            <div class="flex items-center justify-center gap-2 mt-2 px-3 py-1 rounded-full {{ $timerColor }} {{ $isUrgent ? 'animate-pulse' : '' }}">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span class="text-xs font-semibold">
+                                    {{ $minutesAgo }} menit lalu
+                                    @if($isUrgent) ⚠️ @endif
+                                </span>
+                            </div>
                         </div>
                     </div>
                 @endforeach

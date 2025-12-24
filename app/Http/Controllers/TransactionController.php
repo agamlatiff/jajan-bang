@@ -173,6 +173,7 @@ class TransactionController extends Controller
             }
 
             session(['external_id' => $uuid]);
+            session(['invoice_number' => $transactionCode]);
             session(['has_unpaid_transaction' => true]);
 
             return redirect($invoice['invoice_url']);
