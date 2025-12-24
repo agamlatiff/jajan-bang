@@ -193,10 +193,10 @@
 
 ### Backend Validation
 
-- [ ] Create Form Request classes (CheckoutRequest, etc.)
-- [ ] Add comprehensive input validation
+- [x] Create Form Request classes (CheckoutRequest) ✅
+- [x] Add comprehensive input validation ✅
 - [ ] Implement file upload security
-- [ ] Add input sanitization
+- [x] Add input sanitization (Sanitizer helper) ✅
 - [ ] Mass assignment protection
 
 ### Frontend Validation
@@ -208,9 +208,9 @@
 
 ### Security Hardening
 
-- [ ] Implement rate limiting on checkout
-- [ ] Add cart integrity checks (price verification)
-- [ ] CSRF token validation
+- [x] Implement rate limiting on checkout (5/min) ✅
+- [x] Add cart integrity checks (price verification) ✅
+- [x] CSRF token validation (already enabled) ✅
 - [ ] Session security improvements
 - [ ] Cart expiry mechanism
 - [ ] Add captcha on checkout (optional)
