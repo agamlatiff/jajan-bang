@@ -40,20 +40,25 @@
                 </button>
             </div>
         @else
-            <div>
-                <img
-                    src="{{ asset("assets/images/bg-cart-empty.png") }}"
-                    alt="Tidak ada data"
-                    class="w-full overflow-hidden rounded-3xl"
-                />
-                <div class="mt-4 w-full text-center">
-                    <p class="text-lg font-semibold text-black-80">
-                        Tidak Ada Data
-                    </p>
-                    <p class="text-sm font-medium text-black-30">
-                        Silakan masukkan makanan kamu disini
-                    </p>
-                </div>
+            <div class="flex flex-col items-center justify-center py-12">
+                <!-- Empty Cart Illustration -->
+                <svg class="w-32 h-32 text-primary-30 mb-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                
+                <h3 class="text-xl font-semibold text-black-80 mb-2">Keranjang Kosong</h3>
+                <p class="text-center text-black-40 mb-6 max-w-xs">
+                    Belum ada makanan di keranjangmu. Yuk mulai pesan makanan favoritmu!
+                </p>
+                
+                <!-- CTA Button -->
+                <a href="{{ url('/menu') }}" 
+                   class="flex items-center gap-2 bg-primary-50 text-white px-6 py-3 rounded-full font-semibold hover:bg-primary-60 transition-all hover:scale-105">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                    </svg>
+                    Lihat Menu
+                </a>
             </div>
         @endif
     </div>

@@ -163,10 +163,21 @@
             </div>
         @else
             @if ($searchResult->isEmpty())
-                <div class="my-2 w-full">
-                    <p class="text-center text-black-70">
-                        Makanan tidak ditemukan
+                <div class="flex flex-col items-center justify-center py-12 container">
+                    <!-- Search Not Found Illustration -->
+                    <svg class="w-24 h-24 text-primary-30 mb-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M20 20l-3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M9 9l4 4M13 9l-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    <h3 class="text-lg font-semibold text-black-80 mb-2">Makanan Tidak Ditemukan</h3>
+                    <p class="text-center text-black-40 mb-4 max-w-xs">
+                        Coba cari dengan kata kunci lain atau lihat semua menu kami
                     </p>
+                    <a href="{{ url('/food') }}" 
+                       class="text-primary-50 font-semibold hover:underline">
+                        Lihat Semua Menu →
+                    </a>
                 </div>
             @else
                 <div
