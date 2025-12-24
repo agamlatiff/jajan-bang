@@ -14,11 +14,18 @@ class Foods extends Model
     protected $guarded = [];
 
     protected $fillable = [
-        'name', 'description', 'image', 'price', 'price_afterdiscount', 'percent', 'is_promo', 'categories_id'
+        'name',
+        'description',
+        'image',
+        'price',
+        'price_afterdiscount',
+        'percent',
+        'is_promo',
+        'categories_id'
     ];
 
     protected $searchable = ['name', 'description'];
-    
+
     public function categories()
     {
         return $this->belongsTo(Category::class);
@@ -45,23 +52,27 @@ class Foods extends Model
 
     public function getPromo()
     {
-        return DB::table('foods')
-            ->leftJoin('transaction_items', 'foods.id', '=', 'transaction_items.foods_id')
-            ->select('foods.*', DB::raw('COALESCE(SUM(transaction_items.quantity), 0) as total_sold'))
-            ->where('foods.is_promo', 1)
-            ->groupBy('foods.id')
-            ->get();
+        return cache()->remember('foods.promo', now()->addMinutes(5), function () {
+            return DB::table('foods')
+                ->leftJoin('transaction_items', 'foods.id', '=', 'transaction_items.foods_id')
+                ->select('foods.*', DB::raw('COALESCE(SUM(transaction_items.quantity), 0) as total_sold'))
+                ->where('foods.is_promo', 1)
+                ->groupBy('foods.id')
+                ->get();
+        });
     }
 
     public function getFavoriteFood()
     {
-        return TransactionItems::select(
-            'foods.*', 
-            DB::raw('SUM(transaction_items.quantity) as total_sold')
-        )
-        ->join('foods', 'transaction_items.foods_id', '=', 'foods.id')
-        ->groupBy('foods.id')
-        ->orderByDesc('total_sold')
-        ->get();
+        return cache()->remember('foods.favorites', now()->addMinutes(5), function () {
+            return TransactionItems::select(
+                'foods.*',
+                DB::raw('SUM(transaction_items.quantity) as total_sold')
+            )
+                ->join('foods', 'transaction_items.foods_id', '=', 'foods.id')
+                ->groupBy('foods.id')
+                ->orderByDesc('total_sold')
+                ->get();
+        });
     }
 }

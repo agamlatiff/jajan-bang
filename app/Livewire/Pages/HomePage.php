@@ -18,7 +18,7 @@ class HomePage extends Component
     public $phone;
 
     public $term = '';
-    
+
     public bool $isCustomerDataComplete = true;
 
     public function mount(Foods $foods)
@@ -42,7 +42,7 @@ class HomePage extends Component
             'name' => 'required|string|max:255',
             'phone' => 'required|string|max:15',
         ]);
-        
+
         session(['name' => $this->name, 'phone' => $this->phone]);
         $this->name = session('name');
     }
@@ -50,7 +50,6 @@ class HomePage extends Component
     #[Layout('components.layouts.page')]
     public function render(Foods $foods)
     {
-        sleep(1);
         $searchResult = $foods->search(trim($this->term))->get();
 
         return view('home', [
