@@ -12,7 +12,7 @@
 #### Missing Loading States
 
 - [x] No loading indicators on detail page (add to cart, order now) ✅
-- ❌ Cart operations feel unresponsive
+- [x] Cart checkout button has loading state ✅
 - ❌ Image loading has no skeleton/placeholder
 - ❌ Payment processing shows no progress
 
