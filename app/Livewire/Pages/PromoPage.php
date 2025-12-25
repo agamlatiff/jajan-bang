@@ -11,7 +11,7 @@ use Livewire\Component;
 class PromoPage extends Component
 {
     use CategoryFilterTrait;
-    
+
     public $categories;
     public $selectedCategories = [];
     public $items;
@@ -19,7 +19,7 @@ class PromoPage extends Component
 
     public function mount(Foods $foods)
     {
-        $this->categories = Category::all();
+        $this->categories = Category::cached();
         $this->items = $foods->getPromo();
     }
 

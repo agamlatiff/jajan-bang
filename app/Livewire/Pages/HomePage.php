@@ -23,7 +23,7 @@ class HomePage extends Component
 
     public function mount(Foods $foods)
     {
-        $this->categories = Category::all();
+        $this->categories = Category::cached();
         $this->promos = $foods->getPromo();
         $this->favorites = $foods->getFavoriteFood();
         $this->tableNumber = session('table_number');

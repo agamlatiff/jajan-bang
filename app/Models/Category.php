@@ -14,4 +14,22 @@ class Category extends Model
         'description',
         'icon',
     ];
+
+    /**
+     * Get all categories with caching (10 minutes)
+     */
+    public static function cached()
+    {
+        return cache()->remember('categories.all', now()->addMinutes(10), function () {
+            return self::all();
+        });
+    }
+
+    /**
+     * Relationship to foods
+     */
+    public function foods()
+    {
+        return $this->hasMany(Foods::class, 'categories_id');
+    }
 }

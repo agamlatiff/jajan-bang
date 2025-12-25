@@ -127,7 +127,7 @@
 
 #### Performance
 
-- [ ] Fix N+1 query problems
+- [x] Fix N+1 query problems (Eloquent eager loading + caching)
 - [ ] Install Redis caching
 - [ ] Responsive image srcset
 - [ ] Image compression

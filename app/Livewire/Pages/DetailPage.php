@@ -17,7 +17,7 @@ class DetailPage extends Component
 
     public function mount(Foods $foods, $id)
     {
-        $this->categories = Category::all();
+        $this->categories = Category::cached();
 
         $this->food = $foods->getFoodDetails($id)->first();
 
@@ -27,7 +27,7 @@ class DetailPage extends Component
 
         $this->matchedCategory = collect($this->categories)->firstWhere('id', $this->food->categories_id);
     }
-    
+
     public function addToCart()
     {
         $cartItems = session('cart_items', []);
@@ -45,11 +45,12 @@ class DetailPage extends Component
                 ]
             );
         }
-    
+
         session(['cart_items' => $cartItems]);
         session(['has_unpaid_transaction' => false]);
-    
-        $this->dispatch('toast', 
+
+        $this->dispatch(
+            'toast',
             data: [
                 'message1' => 'Item added to cart',
                 'message2' => $this->food->name,
