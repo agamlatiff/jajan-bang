@@ -31,7 +31,7 @@ Route::middleware(CheckTableNumber::class)->group(function () {
     Route::get("/food/{id}", DetailPage::class)->name("product.detail");
 });
 
-Route::middleware([CheckTableNumber::class])->controller(TransactionController::class)->group(function () {
+Route::middleware([CheckTableNumber::class, 'cart.expiry'])->controller(TransactionController::class)->group(function () {
     Route::get("/cart", CartPage::class)->name("payment.cart");
     Route::get("/checkout", CheckoutPage::class)->middleware('cart.verify')->name("payment.checkout");
 

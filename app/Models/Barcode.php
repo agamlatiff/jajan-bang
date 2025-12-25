@@ -9,7 +9,12 @@ class Barcode extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'table_number',
+        'token',
+        'image',
+        'is_active',
+    ];
 
     public function users()
     {

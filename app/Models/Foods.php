@@ -11,8 +11,6 @@ class Foods extends Model
     use HasFactory;
     use Search;
 
-    protected $guarded = [];
-
     protected $fillable = [
         'name',
         'description',

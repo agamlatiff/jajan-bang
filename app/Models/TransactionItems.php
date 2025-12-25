@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class TransactionItems extends Model
 {
-    protected $guarded = [];
     protected $fillable = [
         "transaction_id",
         "foods_id",

@@ -27,6 +27,7 @@ return Application::configure(basePath: dirname(__DIR__))
         // Register custom middleware aliases
         $middleware->alias([
             'cart.verify' => \App\Http\Middleware\VerifyCartIntegrity::class,
+            'cart.expiry' => \App\Http\Middleware\CartExpiryMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

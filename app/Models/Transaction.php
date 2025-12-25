@@ -11,7 +11,17 @@ class Transaction extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'invoice_number',
+        'customer_name',
+        'customer_phone',
+        'table_number',
+        'total_price',
+        'payment_method',
+        'payment_status',
+        'order_status',
+        'midtrans_order_id',
+    ];
 
     protected $casts = [
         'order_status' => OrderStatus::class,
