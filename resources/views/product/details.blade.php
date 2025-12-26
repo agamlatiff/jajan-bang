@@ -5,7 +5,8 @@
     <div class="w-full h-60 overflow-hidden rounded-2xl">
         <img src="{{ str_starts_with($food->image, 'http') ? $food->image : Storage::url($food->image) }}" 
              alt="{{ $food->name }}"
-             loading="lazy" 
+             loading="lazy"
+             decoding="async"
              class="w-full h-full object-cover" />
     </div>
     <div class="relative z-20 -mt-12 flex-grow overflow-hidden rounded-t-3xl bg-white p-4 font-poppins">

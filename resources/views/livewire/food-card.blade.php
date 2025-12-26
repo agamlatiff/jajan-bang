@@ -24,10 +24,16 @@
             </div>
         @endif
 
+        @php
+            $imageUrl = str_starts_with($data->image, 'http') ? $data->image : Storage::url($data->image);
+        @endphp
         <img
-            src="{{ str_starts_with($data->image, 'http') ? $data->image : Storage::url($data->image) }}"
+            src="{{ $imageUrl }}"
             alt="{{ $data->name }}"
             loading="lazy"
+            decoding="async"
+            fetchpriority="low"
+            sizes="(max-width: 640px) 50vw, 180px"
             class="aspect-square w-full rounded-xl object-cover bg-gray-100"
             onerror="this.onerror=null; this.src='{{ asset('assets/images/placeholder-food.svg') }}'; this.classList.add('p-4');"
         />

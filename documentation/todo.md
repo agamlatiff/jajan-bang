@@ -127,10 +127,14 @@
 
 #### Performance
 
-- [x] Fix N+1 query problems (Eloquent eager loading + caching)
-- [ ] Install Redis caching
-- [ ] Responsive image srcset
-- [ ] Image compression
+- [x] Fix N+1 query problems (Eloquent eager loading)
+- [x] Category caching (10 mins via Category::cached())
+- [x] Food queries caching (5 mins - getAllFoods, getPromo, getFavoriteFood)
+- [x] Image lazy loading (food-card, details, menu-item-list)
+- [x] Font optimization (Poppins 18 → 4 weights)
+- [x] Defer external scripts (html5-qrcode)
+- [x] Responsive image attributes (decoding, fetchpriority, sizes)
+- [x] Production cache commands (see documentation/production-cache.md)
 
 #### Testing
 
