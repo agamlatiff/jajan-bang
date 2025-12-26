@@ -157,8 +157,11 @@
 
 #### Analytics Dashboard
 
-- [ ] Revenue statistics (daily/weekly/monthly)
-- [ ] Best sellers chart (Chart.js)
+- [x] StatsOverview widget (daily/monthly revenue, pending orders)
+- [x] Best sellers widget (top 5 products table)
+- [x] Recent orders widget (last 10 orders)
+- [x] Revenue trend chart (7-day line chart)
+- [x] Trend indicators (+/-% vs yesterday/last month)
 - [ ] Export to PDF/Excel
 
 ### Low Priority
