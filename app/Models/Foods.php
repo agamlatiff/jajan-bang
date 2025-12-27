@@ -19,6 +19,7 @@ class Foods extends Model
         'price_afterdiscount',
         'percent',
         'is_promo',
+        'is_available',
         'categories_id'
     ];
 

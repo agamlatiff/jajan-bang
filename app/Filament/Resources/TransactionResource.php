@@ -34,6 +34,11 @@ class TransactionResource extends Resource
 
     protected static ?int $navigationSort = 1;
 
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['code', 'name', 'phone'];
+    }
+
     public static function getRecordTitle(?Model $record): string|Htmlable|null
     {
         return $record->name;
