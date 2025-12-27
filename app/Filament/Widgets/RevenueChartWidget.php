@@ -12,6 +12,11 @@ class RevenueChartWidget extends ChartWidget
 
   protected static ?int $sort = 3;
 
+  public static function canView(): bool
+  {
+    return auth()->user()->isAdmin();
+  }
+
   public ?string $filter = 'week';
 
   protected function getFilters(): ?array

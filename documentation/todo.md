@@ -112,7 +112,7 @@
 - [x] Search Improvements - Global search across transactions, food items, categories
 - [x] Date Range Filters - Filter Revenue/Orders by custom date ranges
 - [x] Notification Bell - Real-time alerts for new/pending orders
-- [ ] Food Stock Management - Toggle availability (in_stock boolean)
+- [x] Food Stock Management - Toggle availability (in_stock boolean)
 - [x] Export Data - PDF/Excel for transactions and reports
 
 **📊 Business/Analytics Improvements**
@@ -126,7 +126,7 @@
 
 **🔐 Security/Access**
 
-- [ ] Role-Based Access (Admin vs Staff) - Restrict sensitive data
+- [x] Role-Based Access (Admin vs Staff) - Restrict sensitive data
 - [ ] Activity Log - Track who modified what
 - [ ] Two-Factor Authentication (2FA)
 

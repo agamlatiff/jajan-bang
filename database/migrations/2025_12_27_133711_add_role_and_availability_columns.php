@@ -16,6 +16,12 @@ return new class extends Migration
                 $table->boolean('is_available')->default(true);
             }
         });
+
+        Schema::table('users', function (Blueprint $table) {
+            if (!Schema::hasColumn('users', 'role')) {
+                $table->string('role')->default('staff'); // admin, staff
+            }
+        });
     }
 
     /**
@@ -24,7 +30,15 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('foods', function (Blueprint $table) {
-            $table->dropColumn('is_available');
+            if (Schema::hasColumn('foods', 'is_available')) {
+                $table->dropColumn('is_available');
+            }
+        });
+
+        Schema::table('users', function (Blueprint $table) {
+            if (Schema::hasColumn('users', 'role')) {
+                $table->dropColumn('role');
+            }
         });
     }
 };

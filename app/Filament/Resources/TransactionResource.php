@@ -44,6 +44,11 @@ class TransactionResource extends Resource
         return $record->name;
     }
 
+    public static function canDelete(Model $record): bool
+    {
+        return auth()->user()->isAdmin();
+    }
+
     public static function canEdit(Model $record): bool
     {
         return false;

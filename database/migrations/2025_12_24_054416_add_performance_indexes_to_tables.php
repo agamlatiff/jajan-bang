@@ -12,21 +12,33 @@ return new class extends Migration
     public function up(): void
     {
         // Index for foods table - frequently joined with categories
-        Schema::table('foods', function (Blueprint $table) {
-            $table->index('categories_id', 'idx_foods_categories');
-        });
+        try {
+            Schema::table('foods', function (Blueprint $table) {
+                $table->index('categories_id', 'idx_foods_categories');
+            });
+        } catch (\Exception $e) {
+            // Index likely already exists
+        }
 
         // Composite index for transactions - frequently filtered by status and date
-        Schema::table('transactions', function (Blueprint $table) {
-            $table->index(['payment_status', 'created_at'], 'idx_transactions_payment_status_date');
-            $table->index('order_status', 'idx_transactions_order_status');
-        });
+        try {
+            Schema::table('transactions', function (Blueprint $table) {
+                $table->index(['payment_status', 'created_at'], 'idx_transactions_payment_status_date');
+                $table->index('order_status', 'idx_transactions_order_status');
+            });
+        } catch (\Exception $e) {
+            // Indexes likely already exist
+        }
 
         // Indexes for transaction_items - foreign keys
-        Schema::table('transaction_items', function (Blueprint $table) {
-            $table->index('transaction_id', 'idx_transaction_items_transaction');
-            $table->index('foods_id', 'idx_transaction_items_foods');
-        });
+        try {
+            Schema::table('transaction_items', function (Blueprint $table) {
+                $table->index('transaction_id', 'idx_transaction_items_transaction');
+                $table->index('foods_id', 'idx_transaction_items_foods');
+            });
+        } catch (\Exception $e) {
+            // Indexes likely already exist
+        }
     }
 
     /**

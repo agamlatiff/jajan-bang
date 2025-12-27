@@ -11,6 +11,11 @@ class StatsOverview extends BaseWidget
 {
   protected static ?int $sort = 2;
 
+  public static function canView(): bool
+  {
+    return auth()->user()->isAdmin();
+  }
+
   protected function getStats(): array
   {
     $today = now()->startOfDay();

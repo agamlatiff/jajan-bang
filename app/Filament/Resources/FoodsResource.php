@@ -104,6 +104,9 @@ class FoodsResource extends Resource
                     ->sortable(),
                 Tables\Columns\IconColumn::make('is_promo')
                     ->boolean(),
+                Tables\Columns\ToggleColumn::make('is_available')
+                    ->label('Tersedia')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('categories.name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')

@@ -13,6 +13,11 @@ class BestSellersWidget extends BaseWidget
 {
   protected static ?int $sort = 4;
 
+  public static function canView(): bool
+  {
+    return auth()->user()->isAdmin();
+  }
+
   protected int | string | array $columnSpan = 'full';
 
   public function table(Table $table): Table
