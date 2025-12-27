@@ -111,9 +111,9 @@
 - [x] Inline Edit for Order Status - Update status directly from table
 - [x] Search Improvements - Global search across transactions, food items, categories
 - [x] Date Range Filters - Filter Revenue/Orders by custom date ranges
-- [ ] Notification Bell - Real-time alerts for new/pending orders
+- [x] Notification Bell - Real-time alerts for new/pending orders
 - [ ] Food Stock Management - Toggle availability (in_stock boolean)
-- [ ] Export Data - PDF/Excel for transactions and reports
+- [x] Export Data - PDF/Excel for transactions and reports
 
 **📊 Business/Analytics Improvements**
 

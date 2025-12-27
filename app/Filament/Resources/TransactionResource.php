@@ -234,6 +234,29 @@ class TransactionResource extends Resource
                         });
                     })
                     ->deselectRecordsAfterCompletion(),
+
+                BulkAction::make('export')
+                    ->label('Export CSV')
+                    ->icon('heroicon-o-arrow-down-tray')
+                    ->action(function (Collection $records) {
+                        return response()->streamDownload(function () use ($records) {
+                            echo "Kode Transaksi,Nama Customer,Telepon,Metode Pembayaran,Status Pembayaran,Total,Status Order,Tanggal\n";
+
+                            foreach ($records as $record) {
+                                echo sprintf(
+                                    "%s,%s,%s,%s,%s,%s,%s,%s\n",
+                                    $record->code,
+                                    '"' . str_replace('"', '""', $record->name) . '"',
+                                    $record->phone,
+                                    $record->payment_method,
+                                    $record->payment_status,
+                                    $record->total,
+                                    $record->order_status?->value ?? '-',
+                                    $record->created_at->format('Y-m-d H:i:s')
+                                );
+                            }
+                        }, 'transactions-' . now()->format('Y-m-d-His') . '.csv');
+                    }),
             ]);
     }
 
