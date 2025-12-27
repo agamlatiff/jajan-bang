@@ -18,6 +18,7 @@
         
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 
         <script
             src="https://unpkg.com/html5-qrcode"
@@ -26,7 +27,7 @@
         ></script>
 
         <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&flay=swap"
             rel="stylesheet"
         />
 
@@ -34,7 +35,7 @@
 
         <title>{{ $title ?? "Jajan Bang" }}</title>
     </head>
-    <body class="{{ $class ?? "" }} mx-auto max-w-md bg-[#f5f5f9]">
+    <body class="{{ $class ?? "" }} mx-auto max-w-md min-h-screen bg-background-light text-black-100 font-sans antialiased selection:bg-primary selection:text-white">
         {{ $slot }}
         
         <!-- Service Worker Registration -->

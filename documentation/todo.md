@@ -57,170 +57,57 @@
 - [x] Food image display (external URL support)
 - [x] Responsive layouts
 
-### Phase 5: Order Management (Partial)
-
-- [x] Order status enum system
-- [x] Customer order tracking page
-- [x] Kitchen dashboard (Livewire component)
-- [x] Order queue display with filters
-- [x] Mark orders as completed
-- [x] Order timer/alerts (color-coded)
-- [x] Order cancellation support
-
-### Phase 6: Validation & Security (Partial)
-
-- [x] CheckoutRequest with Indonesian phone validation
-- [x] Customer name validation
-- [x] Sanitizer helper
-- [x] Rate limiting on checkout (5/min)
-- [x] Cart price verification
-- [x] CSRF token validation
-
-### Phase 7: Performance (Partial)
-
-- [x] Database indexes (5 performance indexes)
-- [x] Query result caching (5 mins for promo/favorites)
-
-### Phase 8: Testing (Partial)
-
-- [x] PHPUnit configured
-- [x] Test database (SQLite in-memory)
-- [x] Foods model tests
-- [x] Page access tests
-- [x] OrderStatus enum tests
-- [x] Sanitizer helper tests
-
-### PWA Features
-
-- [x] PWA manifest
-- [x] Service worker
-- [x] Offline indicator page
-
----
-
 ## 🔄 In Progress
 
-### Phase 5: Order Management
+### Phase X: Complete App Redesign 🎨
 
-- [ ] Install Pusher/Laravel WebSockets (real-time)
-- [ ] Kitchen notification system
-- [ ] Email notifications
-- [ ] Print receipt functionality
-- [ ] Order assignment to staff
-- [ ] Order history per table
-- [ ] Reorder functionality
+> **Focus**: Redesigning the entire application from scratch for a premium, modern feel.
+
+#### 1. Foundation & Shared Components
+
+- [x] Define Design System (Colors, Typography, Shadows)
+- [x] Redesign `AppLayout` (Shell)
+- [x] Redesign `Main Menu` (Bottom Nav)
+- [x] Redesign `PageTitleNav` (Header)
+- [x] Redesign `FoodCard` (Core Component)
+
+#### 2. Design Implementation (Source: `@design-jajan-bang`)
+
+**Customer Pages**
+
+- [x] **Home Page** (`design-jajan-bang/home-page`)
+- [x] **Scan Page** (`design-jajan-bang/scan-page`)
+- [x] **All Foods Page** (`design-jajan-bang/all-foods-page`)
+- [x] **Promo Page** (`design-jajan-bang/promo-page`)
+- [x] **Favorite Page** (`design-jajan-bang/favorite-page`)
+- [x] **Food Detail Page** (`design-jajan-bang/food-detail-page`)
+- [x] **Cart Page** (`design-jajan-bang/cart-page`)
+- [x] **Checkout Page** (`design-jajan-bang/checkout-page`)
+
+**Payment Status**
+
+- [ ] **Success Page** (`design-jajan-bang/success-page`)
+- [ ] **Failed Page** (`design-jajan-bang/failed-page`)
+
+**Order Management**
+
+- [ ] **Track Order Page** (`design-jajan-bang/track-order-page`)
+- [ ] **Kitchen Page** (`design-jajan-bang/kitchen-page`)
+
+#### 3. Admin Panel (Filament)
+
+- [ ] Custom Theme/Colors for Admin Panel
+- [ ] Dashboard Widgets Redesign
 
 ---
 
 ## 📋 Todo
 
-### High Priority
+### Pending Features (On Hold for Redesign)
 
-#### Validation & Security
-
-- [x] File upload security (already secured in FoodsResource)
-- [x] Mass assignment protection (5 models updated)
-- [x] Client-side validation (Alpine.js)
-- [x] Quantity limits (max 99)
-- [x] Session security improvements (encryption enabled)
-- [x] Cart expiry mechanism (2 hours)
-
-#### Performance
-
-- [x] Fix N+1 query problems (Eloquent eager loading)
-- [x] Category caching (10 mins via Category::cached())
-- [x] Food queries caching (5 mins - getAllFoods, getPromo, getFavoriteFood)
-- [x] Image lazy loading (food-card, details, menu-item-list)
-- [x] Font optimization (Poppins 18 → 4 weights)
-- [x] Defer external scripts (html5-qrcode)
-- [x] Responsive image attributes (decoding, fetchpriority, sizes)
-- [x] Production cache commands (see documentation/production-cache.md)
-
-#### Testing
-
-- [ ] Transaction model tests
-- [ ] Category model tests
-- [ ] Add to cart test
-- [ ] Checkout process test
-- [ ] Setup GitHub Actions CI/CD
-- [ ] Code coverage 70%+
-
-### Medium Priority
-
-#### UI/UX Polish
-
-- [ ] Smooth transitions
-- [ ] Error state improvements
-- [ ] Toast notification improvements
-- [ ] Swipe gestures
-- [ ] Pull-to-refresh
-
-#### Analytics Dashboard
-
-- [x] StatsOverview widget (daily/monthly revenue, pending orders)
-- [x] Best sellers widget (top 5 products table)
-- [x] Recent orders widget (last 10 orders)
-- [x] Revenue trend chart (7-day line chart)
-- [x] Trend indicators (+/-% vs yesterday/last month)
-- [ ] Export to PDF/Excel
-
-### UI Redesign (See `pages-overview.md` for sections)
-
-#### Customer Pages
-
-- [ ]   1. Home Page - Header, Search, Promo Slider, Banner, Favorites
-- [ ]   2. All Food Page - Title Nav, Food Grid, Filter Modal
-- [ ]   3. Promo Page - Title Nav, Promo Grid
-- [ ]   4. Favorite Page - Title Nav, Favorite Grid
-- [ ]   5. Detail Page - Image, Info Card, Action Buttons
-- [ ]   6. Cart Page - Items List, Actions, Empty State
-- [ ]   7. Checkout Page - Customer Info, Order Items, Price Summary
-- [ ]   8. Scan QR Page - QR Scanner UI
-
-#### Payment Status Pages
-
-- [ ]   9. Success Page - Icon, Message, Track Button
-- [ ]   10. Failure Page - Icon, Message, Retry Button
-
-#### Order Management Pages
-
-- [ ]   11. Order Tracking - Search, Timeline, Details
-- [ ]   12. Kitchen Dashboard - Stats, Filters, Order Cards
-
-#### Admin Panel (Filament)
-
-- [ ] Dashboard Widgets - Stats, Revenue Chart, Orders, Best Sellers
-- [ ] Category Resource - List, Create/Edit
-- [ ] Foods Resource - List, Form, Filters
-- [ ] Transaction Resource - List, Detail, Status Actions
-- [ ] Barcode Resource - List, QR Generator
-
-#### Shared Components
-
-- [ ] Food Card - Image, Badge, Price
-- [ ] Main Menu - Bottom Navigation
-- [ ] Page Title Nav - Back, Title, Filter
-- [ ] Customer Modal - Form UI
-- [ ] Filter Modal - Category Selection
-- [ ] Menu Item List - Quantity, Checkbox
-- [ ] Toast Component - Notifications
-
-### Low Priority
-
-#### Advanced Features
-
-- [ ] Optional user accounts
-- [ ] Ratings & reviews system
-- [ ] Loyalty points program
-- [ ] Push notifications
-- [ ] Multi-location support
-- [ ] Inventory management
-- [ ] Staff role-based access
-
-#### Internationalization
-
-- [ ] Language switcher (ID, EN)
-- [ ] Currency localization
+- [ ] Kitchen Auth Middleware
+- [ ] Implementation of `KitchenAuthMiddleware` (PIN/Login protection)
+- [ ] Export to PDF/Excel (Analytics)
 
 ---
 

@@ -38,21 +38,23 @@
                     return this.validateName() && this.validatePhone();
                 }
             }"
+            class="pb-4"
         >
-            <p class="text-xs text-black-40 mb-4">
+            <p class="mb-6 text-sm text-gray-500 dark:text-gray-400">
                 <span class="text-red-500">*</span> Wajib diisi sebelum memesan
             </p>
-            <div class="mb-6 space-y-4">
-                <div class="flex flex-col space-y-1">
+            
+            <div class="mb-8 space-y-5">
+                <div class="space-y-2">
                     <label
-                        class="text-xs font-semibold text-black-50"
+                        class="text-sm font-semibold text-gray-700 dark:text-gray-300"
                         for="name"
                     >
                         Nama Pemesan <span class="text-red-500">*</span>
                     </label>
                     <input
-                        :class="errors.name ? 'border-red-500' : 'border-black-30'"
-                        class="rounded-lg border px-2 py-1.5"
+                        :class="errors.name ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:border-primary-600 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-800 dark:text-white'"
+                        class="w-full rounded-xl border p-3 text-sm shadow-sm transition-all focus:ring-1 focus:outline-none placeholder:text-gray-400"
                         type="text"
                         name="name"
                         required
@@ -61,6 +63,7 @@
                         @blur="validateName()"
                         @input="validateName()"
                         wire:model.live="name"
+                        placeholder="Contoh: Budi Santoso"
                     />
                     <span x-show="errors.name" x-text="errors.name" class="text-xs text-red-500"></span>
                     @error("name")
@@ -69,16 +72,17 @@
                         </span>
                     @enderror
                 </div>
-                <div class="flex flex-col space-y-1">
+                
+                <div class="space-y-2">
                     <label
-                        class="text-xs font-semibold text-black-50"
+                        class="text-sm font-semibold text-gray-700 dark:text-gray-300"
                         for="phone"
                     >
                         Nomor Handphone <span class="text-red-500">*</span>
                     </label>
                     <input
-                        :class="errors.phone ? 'border-red-500' : 'border-black-30'"
-                        class="rounded-lg border px-2 py-1.5"
+                        :class="errors.phone ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:border-primary-600 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-800 dark:text-white'"
+                        class="w-full rounded-xl border p-3 text-sm shadow-sm transition-all focus:ring-1 focus:outline-none placeholder:text-gray-400"
                         type="tel"
                         name="phone"
                         required
@@ -97,13 +101,13 @@
                 </div>
             </div>
 
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between gap-4">
                 <button
                     x-on:click="if(isValid) open = false"
                     :disabled="!isValid"
                     type="button"
-                    :class="isValid ? 'bg-primary-10 text-primary-60 hover:bg-primary-20 cursor-pointer' : 'bg-gray-100 text-gray-400 cursor-not-allowed'"
-                    class="rounded-full px-5 py-2 font-semibold outline-none transition-all"
+                    :class="isValid ? 'bg-primary-50 text-primary-600 hover:bg-primary-100 cursor-pointer' : 'bg-gray-100 text-gray-400 cursor-not-allowed'"
+                    class="flex-1 rounded-full px-5 py-3 font-semibold transition-colors"
                 >
                     Kembali
                 </button>
@@ -112,16 +116,13 @@
                     x-on:click="if(validate()) open = false"
                     :disabled="!isValid"
                     type="submit"
-                    :class="isValid ? 'bg-primary-50 hover:bg-primary-60 cursor-pointer' : 'bg-primary-30 cursor-not-allowed'"
-                    class="rounded-full px-5 py-2 font-semibold text-white transition-all"
+                    :class="isValid ? 'bg-primary-600 hover:bg-primary-700 cursor-pointer shadow-lg shadow-primary-600/20' : 'bg-gray-300 cursor-not-allowed'"
+                    class="flex-2 rounded-full px-5 py-3 font-semibold text-white transition-colors"
                 >
-                    <span class="flex items-center gap-1.5">
-                        Terapkan
-                        <img
-                            src="{{ asset("assets/icons/arrow-right-white-icon.svg") }}"
-                            alt="Terapkan"
-                        />
-                    </span>
+                    <div class="flex items-center justify-center gap-2">
+                        <span>Terapkan</span>
+                        <span class="material-icons text-sm">arrow_forward</span>
+                    </div>
                 </button>
             </div>
         </form>

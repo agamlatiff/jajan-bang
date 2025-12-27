@@ -1,28 +1,38 @@
-<div class="min-h-screen bg-gray-50 font-poppins">
-    <livewire:components.page-title-nav 
-        :title="'Lacak Pesanan'" 
-        wire:key="{{ str()->random(50) }}" 
-        :hasBack="true"
-        :hasFilter="false"
-        :backUrl="route('home')" />
+<div class="min-h-screen bg-gray-50 text-gray-900 transition-colors duration-200 dark:bg-background-dark dark:text-white font-sans">
+    <header class="sticky top-0 z-20 bg-white px-6 pb-4 pt-8 shadow-sm dark:bg-card-dark transition-colors">
+        <div class="flex items-center justify-between">
+            <a href="{{ $backUrl ?? url()->previous() }}" class="group flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 transition-colors hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700">
+                <span class="material-icons text-gray-700 transition-colors group-hover:text-primary dark:text-gray-200">arrow_back</span>
+            </a>
+            <h1 class="text-xl font-bold text-gray-900 dark:text-white">Lacak Pesanan</h1>
+            <div class="w-10"></div>
+        </div>
+    </header>
 
-    <div class="container py-6">
-        <!-- Search Form -->
-        <div class="bg-white rounded-2xl p-6 shadow-sm mb-6">
-            <h2 class="text-lg font-semibold text-black-80 mb-4">Cari Pesanan</h2>
+    <main class="relative z-10 flex-1 overflow-y-auto px-6 pb-24 pt-6 scrollbar-hide">
+        <div class="mb-8 rounded-2xl bg-white p-4 shadow-lg shadow-gray-200/50 dark:bg-card-dark dark:shadow-none transition-colors">
+            <label class="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-400" for="invoice">
+                Nomor Invoice
+            </label>
             <form wire:submit="searchOrder" class="flex gap-3">
-                <input 
-                    type="text" 
-                    wire:model="invoiceNumber"
-                    placeholder="Masukkan nomor invoice..."
-                    class="flex-1 px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-50 focus:border-transparent"
-                />
+                <div class="relative flex-1">
+                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                        <span class="material-icons text-lg text-gray-400">receipt</span>
+                    </div>
+                    <input 
+                        wire:model="invoiceNumber"
+                        class="w-full rounded-xl border-none bg-gray-50 py-3 pl-10 pr-4 text-sm font-medium text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-primary dark:bg-gray-800 dark:text-white" 
+                        id="invoice" 
+                        placeholder="Cth: INV-2023001" 
+                        type="text" 
+                    />
+                </div>
                 <button 
                     type="submit"
-                    class="px-6 py-3 bg-primary-50 text-white rounded-xl font-semibold hover:bg-primary-60 transition-all"
+                    class="rounded-xl bg-primary px-5 font-semibold text-white shadow-lg shadow-primary/30 transition-all hover:bg-red-700 active:scale-95"
                 >
                     <span wire:loading.remove wire:target="searchOrder">Cari</span>
-                    <span wire:loading wire:target="searchOrder">
+                    <span wire:loading wire:target="searchOrder" class="flex items-center">
                         <svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -33,124 +43,155 @@
         </div>
 
         @if ($notFound)
-            <!-- Not Found State -->
-            <div class="bg-white rounded-2xl p-8 shadow-sm text-center">
-                <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M12 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <h3 class="text-lg font-semibold text-gray-700 mb-2">Pesanan Tidak Ditemukan</h3>
-                <p class="text-gray-500">Pastikan nomor invoice yang kamu masukkan sudah benar</p>
+            <div class="flex flex-col items-center justify-center py-10 text-center animate-fade-in">
+                <div class="mb-6 flex h-32 w-32 items-center justify-center rounded-full bg-gray-100 shadow-inner dark:bg-gray-800">
+                    <span class="material-icons text-5xl text-gray-400">search_off</span>
+                </div>
+                <h3 class="mb-2 text-lg font-bold text-gray-900 dark:text-white">Invoice Tidak Ditemukan</h3>
+                <p class="max-w-[250px] text-sm leading-relaxed text-gray-400">
+                     Mohon periksa kembali nomor invoice Anda dan coba lagi.
+                 </p>
             </div>
         @elseif ($transaction)
-            <!-- Order Details -->
-            <div class="space-y-4">
-                <!-- Status Card -->
-                <div class="bg-white rounded-2xl p-6 shadow-sm">
-                    <div class="flex items-center justify-between mb-4">
-                        <div>
-                            <p class="text-sm text-gray-500">Invoice</p>
-                            <p class="font-semibold text-black-80">{{ $transaction->invoice_number }}</p>
-                        </div>
-                        <span class="px-3 py-1 rounded-full text-sm font-medium {{ $transaction->order_status?->color() ?? 'bg-gray-100 text-gray-800' }}">
-                            {{ $transaction->order_status?->label() ?? 'Unknown' }}
-                        </span>
-                    </div>
-
-                    <!-- Status Timeline -->
-                    <div class="relative">
-                        <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-200"></div>
+            <div class="space-y-6">
+                <!-- Status Timeline -->
+                <div class="rounded-3xl border border-gray-100 bg-white p-6 shadow-xl shadow-gray-200/50 dark:border-gray-800 dark:bg-card-dark dark:shadow-none transition-colors">
+                    <h3 class="mb-6 flex items-center gap-2 text-lg font-bold">
+                        <span class="material-icons text-primary">timeline</span>
+                        Status Pesanan
+                    </h3>
+                    
+                    @php
+                        $statuses = [
+                            ['key' => 'pending', 'label' => 'Pesanan Diterima', 'icon' => 'receipt_long'],
+                            ['key' => 'confirmed', 'label' => 'Dikonfirmasi', 'icon' => 'check_circle'],
+                            ['key' => 'preparing', 'label' => 'Sedang Diproses', 'icon' => 'soup_kitchen'],
+                            ['key' => 'ready', 'label' => 'Siap Disajikan', 'icon' => 'room_service'],
+                            ['key' => 'delivered', 'label' => 'Pesanan Selesai', 'icon' => 'flag'],
+                        ];
                         
-                        @php
-                            $statuses = [
-                                ['key' => 'pending', 'label' => 'Pesanan Diterima', 'desc' => 'Pesanan kamu telah diterima'],
-                                ['key' => 'confirmed', 'label' => 'Dikonfirmasi', 'desc' => 'Pesanan dikonfirmasi oleh dapur'],
-                                ['key' => 'preparing', 'label' => 'Sedang Diproses', 'desc' => 'Makanan sedang dimasak'],
-                                ['key' => 'ready', 'label' => 'Siap Diambil', 'desc' => 'Pesanan siap untuk diantar'],
-                                ['key' => 'delivered', 'label' => 'Selesai', 'desc' => 'Pesanan sudah diantar ke meja'],
-                            ];
-                            $currentStatus = $transaction->order_status?->value ?? 'pending';
-                            $statusOrder = array_column($statuses, 'key');
-                            $currentIndex = array_search($currentStatus, $statusOrder);
-                        @endphp
+                        $currentStatus = $transaction->order_status->value;
+                        $statusOrder = array_column($statuses, 'key');
+                        $currentIndex = array_search($currentStatus, $statusOrder);
+                        if($currentIndex === false) $currentIndex = -1;
+                    @endphp
 
+                    <div class="relative pl-2">
                         @foreach ($statuses as $index => $status)
-                            <div class="relative flex items-start pl-10 pb-6 last:pb-0">
-                                <div class="absolute left-2 w-4 h-4 rounded-full border-2 
-                                    {{ $index <= $currentIndex ? 'bg-primary-50 border-primary-50' : 'bg-white border-gray-300' }}">
+                            <div class="relative flex gap-4 pb-10 last:pb-0 {{ $index > $currentIndex ? 'opacity-50' : '' }}">
+                                @if (!$loop->last)
+                                    <div class="absolute bottom-0 left-[19px] top-10 w-0.5 {{ $index < $currentIndex ? 'bg-green-500' : 'border-l-2 border-dashed border-gray-200 dark:border-gray-700' }}"></div>
+                                @endif
+                                
+                                <div class="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full shadow-md transition-all
+                                    {{ $index < $currentIndex ? 'bg-green-500 text-white shadow-green-200 dark:shadow-none' : '' }}
+                                    {{ $index === $currentIndex ? 'bg-primary text-white shadow-primary/40 ring-4 ring-primary/10 dark:ring-primary/20' : '' }}
+                                    {{ $index > $currentIndex ? 'bg-white border-2 border-gray-200 text-gray-400 dark:bg-card-dark dark:border-gray-700' : '' }}
+                                ">
+                                    <span class="material-icons text-[20px] {{ $index === $currentIndex ? 'animate-pulse' : '' }}">
+                                        {{ $status['icon'] }}
+                                    </span>
                                 </div>
-                                <div>
-                                    <p class="font-semibold {{ $index <= $currentIndex ? 'text-black-80' : 'text-gray-400' }}">
+                                
+                                <div class="pt-1">
+                                    <h4 class="text-sm font-bold {{ $index === $currentIndex ? 'text-primary text-base' : 'text-gray-900 dark:text-white' }}">
                                         {{ $status['label'] }}
-                                    </p>
-                                    <p class="text-sm {{ $index <= $currentIndex ? 'text-gray-600' : 'text-gray-400' }}">
-                                        {{ $status['desc'] }}
-                                    </p>
+                                    </h4>
+                                    @if ($index === $currentIndex && $status['key'] === 'processing')
+                                        <div class="mt-1.5 inline-flex items-center rounded-lg border border-red-100 bg-red-50 px-2.5 py-1 dark:border-red-900/30 dark:bg-red-900/20">
+                                            <span class="text-xs font-medium text-primary">Koki sedang memasak</span>
+                                        </div>
+                                    @endif
+                                    @if ($index <= $currentIndex && isset($transaction->updated_at))
+                                        <!-- Optional: Show time if available logically -->
+                                    @endif
                                 </div>
                             </div>
                         @endforeach
                     </div>
                 </div>
 
-                <!-- Order Info -->
-                <div class="bg-white rounded-2xl p-6 shadow-sm">
-                    <h3 class="font-semibold text-black-80 mb-4">Detail Pesanan</h3>
-                    
-                    <div class="space-y-3 text-sm">
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">Nama</span>
-                            <span class="font-medium">{{ $transaction->customer_name }}</span>
+                <!-- Detail Pesanan -->
+                <div class="rounded-3xl border border-gray-100 bg-white p-6 shadow-xl shadow-gray-200/50 dark:border-gray-800 dark:bg-card-dark dark:shadow-none transition-colors">
+                    <h3 class="mb-4 flex items-center gap-2 text-lg font-bold">
+                        <span class="material-icons text-primary">receipt_long</span>
+                        Detail Pesanan
+                    </h3>
+                    <div class="space-y-4 text-sm">
+                        <div class="flex items-start justify-between border-b border-gray-100 pb-4 dark:border-gray-800">
+                            <span class="text-gray-400">Nama Pemesan</span>
+                            <span class="font-semibold text-gray-900 text-right dark:text-white">{{ $transaction->name }}</span>
                         </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">Telepon</span>
-                            <span class="font-medium">{{ $transaction->customer_phone }}</span>
+                        <div class="flex items-start justify-between border-b border-gray-100 pb-4 dark:border-gray-800">
+                            <span class="text-gray-400">No. Handphone</span>
+                            <span class="font-semibold text-gray-900 text-right dark:text-white">{{ $transaction->phone }}</span>
                         </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">Meja</span>
-                            <span class="font-medium">{{ $transaction->table_number }}</span>
+                        <div class="flex items-start justify-between border-b border-gray-100 pb-4 dark:border-gray-800">
+                            <span class="text-gray-400">No. Meja</span>
+                            <span class="text-lg font-bold text-primary text-right">#{{ $transaction->table_number }}</span>
                         </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">Pembayaran</span>
-                            <span class="font-medium uppercase">{{ $transaction->payment_method }}</span>
-                        </div>
-                        <hr class="my-2">
-                        <div class="flex justify-between text-lg">
-                            <span class="font-semibold text-black-80">Total</span>
-                            <span class="font-bold text-primary-50">{{ $transaction->formatted_total }}</span>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-400">Metode Bayar</span>
+                            <div class="flex items-center gap-1.5 rounded bg-gray-100 px-2 py-1 text-xs font-semibold text-gray-700 dark:bg-gray-800 dark:text-gray-300">
+                                <span class="material-icons text-sm">qr_code</span> {{ strtoupper($transaction->payment_method) }}
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Order Items -->
-                <div class="bg-white rounded-2xl p-6 shadow-sm">
-                    <h3 class="font-semibold text-black-80 mb-4">Item Pesanan</h3>
-                    
-                    <div class="space-y-3">
-                        @foreach ($transaction->items as $item)
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 bg-primary-10 rounded-lg flex items-center justify-center text-primary-50 font-semibold">
-                                    {{ $item->quantity }}x
+                <!-- Menu Dipesan -->
+                <div class="rounded-3xl border border-gray-100 bg-white p-6 shadow-xl shadow-gray-200/50 dark:border-gray-800 dark:bg-card-dark dark:shadow-none transition-colors">
+                    <h3 class="mb-4 flex items-center gap-2 text-lg font-bold">
+                        <span class="material-icons text-primary">restaurant_menu</span>
+                        Menu Dipesan
+                    </h3>
+                    <div class="space-y-4">
+                        @foreach ($transaction->transactionItems as $item)
+                            <div class="flex gap-4">
+                                <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gray-100 text-xl dark:bg-gray-800">
+                                    🍽️
                                 </div>
                                 <div class="flex-1">
-                                    <p class="font-medium text-black-80">{{ $item->food_name ?? 'Item' }}</p>
-                                    <p class="text-sm text-gray-500">Rp {{ number_format($item->price, 0, ',', '.') }}</p>
+                                    <div class="mb-1 flex items-start justify-between">
+                                        <h4 class="text-sm font-semibold text-gray-900 line-clamp-2 dark:text-white">
+                                            {{ $item->food->name }}
+                                        </h4>
+                                        <span class="text-sm font-bold text-gray-900 dark:text-white">
+                                            {{ number_format($item->amount, 0, ',', '.') }}
+                                        </span>
+                                    </div>
+                                    <div class="flex items-center justify-between text-xs text-gray-400">
+                                        <span>{{ number_format($item->food->price, 0, ',', '.') }}</span>
+                                        <span class="rounded bg-gray-100 px-2 py-0.5 font-mono text-gray-600 dark:bg-gray-800 dark:text-gray-300">
+                                            x{{ $item->quantity }}
+                                        </span>
+                                    </div>
                                 </div>
-                                <p class="font-semibold text-black-80">
-                                    Rp {{ number_format($item->subtotal, 0, ',', '.') }}
-                                </p>
                             </div>
                         @endforeach
+                        
+                        <div class="my-2 h-px bg-gray-100 dark:bg-gray-800"></div>
+                        
+                        <div class="flex items-end justify-between pt-1">
+                            <span class="text-sm font-medium text-gray-400">Total Tagihan</span>
+                            <span class="font-display text-2xl font-bold text-primary">
+                                {{ number_format($transaction->total_amount, 0, ',', '.') }}
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
         @else
             <!-- Initial State -->
-            <div class="bg-white rounded-2xl p-8 shadow-sm text-center">
-                <svg class="w-20 h-20 text-primary-30 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-                </svg>
-                <h3 class="text-lg font-semibold text-gray-700 mb-2">Lacak Status Pesananmu</h3>
-                <p class="text-gray-500">Masukkan nomor invoice untuk melihat status pesanan</p>
+            <div class="flex flex-col items-center justify-center py-10 text-center animate-fade-in">
+                <div class="mb-6 flex h-32 w-32 items-center justify-center rounded-full bg-primary/5">
+                    <span class="material-icons text-5xl text-primary">manage_search</span>
+                </div>
+                <h3 class="mb-2 text-lg font-bold text-gray-900 dark:text-white">Lacak Pesanan Anda</h3>
+                <p class="max-w-[250px] text-sm leading-relaxed text-gray-400">
+                    Masukkan nomor invoice pada kolom di atas untuk melihat status pesanan terkini.
+                </p>
             </div>
         @endif
-    </div>
+    </main>
 </div>

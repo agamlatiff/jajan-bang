@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JajanBang Scan QR</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#D91E26", // Red from the reference image button
+                        "background-light": "#F5F5F5",
+                        "background-dark": "#121212",
+                        "card-dark": "#1E1E1E",
+                        "secondary-text": "#9CA3AF",
+                    },
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                        'xl': '1rem',
+                        '2xl': '1.5rem',
+                        '3xl': '2rem',
+                    },
+                },
+            },
+        };
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<style>
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-black text-white font-sans antialiased h-screen overflow-hidden relative">
+<div class="absolute inset-0 w-full h-full bg-gray-900 flex items-center justify-center overflow-hidden" id="reader">
+<div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60 z-10"></div>
+<img alt="Camera Feed Simulation" class="w-full h-full object-cover opacity-40 blur-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCErDLgknMpN1-iqdx_c18r-v9SG9_a9LnKO4enIRg6hVWWQBao0UpIZoAVhvzP2yBrHZ91YLGPweNMb-4cUbtqH1af7euN1Zs8cVEcVSd22V2Kt-8894ZdBT4dgjB3WvmGTq9jdkjCivgKodWSJcip2C99I4EoxYVV5Wz3wKjeppHhVGCvpFFBnVOiJRd3OJT-EDISyv8UDmPsCOY4DSEB2s9ncYdpKgwJ6JCXXfOrwz_QyVOykV7Zn9NCSIGy4KMw1xx7iG2Q"/>
+</div>
+<div class="absolute inset-0 z-20 flex flex-col justify-between safe-area-padding">
+<div class="p-6 pt-12 flex justify-between items-center">
+<button class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-white/30 transition active:scale-95 text-white">
+<span class="material-icons">arrow_back</span>
+</button>
+<h1 class="font-display font-bold text-xl tracking-wide text-white drop-shadow-md">Scan QR Code</h1>
+<button class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-white/30 transition active:scale-95 text-white">
+<span class="material-icons">flash_on</span>
+</button>
+</div>
+<div class="flex-1 flex flex-col items-center justify-center px-8 pb-12 relative">
+<div class="relative w-72 h-72">
+<div class="absolute -inset-[100vh] bg-black/50 [mask-image:radial-gradient(transparent_10rem,black_10.5rem)] pointer-events-none"></div>
+<div class="absolute top-0 left-0 w-12 h-12 border-t-4 border-l-4 border-primary rounded-tl-3xl shadow-[0_0_15px_rgba(217,30,38,0.6)]"></div>
+<div class="absolute top-0 right-0 w-12 h-12 border-t-4 border-r-4 border-primary rounded-tr-3xl shadow-[0_0_15px_rgba(217,30,38,0.6)]"></div>
+<div class="absolute bottom-0 left-0 w-12 h-12 border-b-4 border-l-4 border-primary rounded-bl-3xl shadow-[0_0_15px_rgba(217,30,38,0.6)]"></div>
+<div class="absolute bottom-0 right-0 w-12 h-12 border-b-4 border-r-4 border-primary rounded-br-3xl shadow-[0_0_15px_rgba(217,30,38,0.6)]"></div>
+<div class="absolute top-1/2 left-6 right-6 h-0.5 bg-primary shadow-[0_0_20px_rgba(217,30,38,1)] animate-pulse"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none">
+<span class="material-icons text-6xl text-white">qr_code_scanner</span>
+</div>
+</div>
+<div class="mt-10 text-center space-y-2 z-20">
+<p class="text-white font-bold text-lg drop-shadow-lg tracking-wide">Align QR code within frame</p>
+<p class="text-gray-300 text-sm max-w-[240px] mx-auto font-medium shadow-black drop-shadow-md">
+                    Scanning will start automatically
+                </p>
+</div>
+</div>
+<div class="px-8 pb-12 pt-6">
+<div class="bg-gray-900/80 backdrop-blur-xl border border-white/10 rounded-3xl p-6 flex justify-around items-center shadow-2xl">
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-12 h-12 rounded-2xl bg-gray-800 border border-gray-700 flex items-center justify-center text-gray-300 shadow-lg transition-all duration-300 group-hover:bg-gray-700 group-hover:border-gray-600 group-active:scale-95">
+<span class="material-icons text-xl">image</span>
+</div>
+<span class="text-[10px] font-semibold text-gray-400 uppercase tracking-wider group-hover:text-white transition-colors">Gallery</span>
+</button>
+<button class="flex flex-col items-center gap-2 group -mt-8">
+<div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white shadow-[0_10px_20px_rgba(217,30,38,0.4)] transition-all duration-300 group-hover:bg-red-600 group-hover:shadow-[0_10px_25px_rgba(217,30,38,0.5)] group-active:scale-95 border-4 border-gray-900">
+<span class="material-icons text-2xl">flashlight_on</span>
+</div>
+<span class="text-[10px] font-semibold text-primary uppercase tracking-wider">Flash</span>
+</button>
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-12 h-12 rounded-2xl bg-gray-800 border border-gray-700 flex items-center justify-center text-gray-300 shadow-lg transition-all duration-300 group-hover:bg-gray-700 group-hover:border-gray-600 group-active:scale-95">
+<span class="material-icons text-xl">keyboard</span>
+</div>
+<span class="text-[10px] font-semibold text-gray-400 uppercase tracking-wider group-hover:text-white transition-colors">Enter Code</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

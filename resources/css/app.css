@@ -1,22 +1,42 @@
 @import "tailwindcss";
 
 @theme {
-    /* Primary Colors */
-    --color-primary-10: #fef3e2;
-    --color-primary-20: #fde6c5;
-    --color-primary-30: #fcd9a8;
-    --color-primary-40: #fbcc8b;
-    --color-primary-50: #f59e0b; /* Amber/Orange utama */
-    --color-primary-60: #d97706; /* Amber lebih gelap */
+    /* New Design System */
 
-    /* Black/Gray Colors */
-    --color-black-10: #ffffff;
-    --color-black-20: #f5f5f5;
-    --color-black-30: #e5e5e5;
-    --color-black-40: #a3a3a3;
-    --color-black-50: #737373;
+    /* Colors */
+    --color-primary: #d91e26; /* JajanBang Red */
+    --color-primary-hover: #b91c1c; /* Darker Red for hover */
+    --color-primary-active: #991b1b;
+    /* Legacy support mapping - to be refactored */
+    --color-primary-10: #fee2e2; /* Red-100 */
+    --color-primary-20: #fecaca; /* Red-200 */
+    --color-primary-30: #fca5a5; /* Red-300 */
+    --color-primary-40: #f87171; /* Red-400 */
+    --color-primary-50: #d91e26; /* Main Red */
+    --color-primary-60: #b91c1c; /* Darker Red */
+
+    /* Backgrounds */
+    --color-background-light: #f5f5f5;
+    --color-background-dark: #121212;
+    --color-card-dark: #1e1e1e;
+
+    /* Text Colors matching Figma */
+    --color-black-100: #171717; /* Main Text */
+    --color-black-80: #404040;
     --color-black-70: #525252;
-    --color-black-100: #171717;
+    --color-black-50: #737373;
+    --color-black-40: #a3a3a3;
+    --color-secondary-text: #9ca3af;
+
+    /* Fonts */
+    --font-display: "Playfair Display", serif;
+    --font-sans: "Inter", sans-serif;
+    --font-poppins: "Inter", sans-serif; /* Fallback alias to avoid breakage */
+
+    /* Border Radius override */
+    --radius-xl: 1rem;
+    --radius-2xl: 1.5rem;
+    --radius-3xl: 2rem;
 }
 
 dialog[open] {

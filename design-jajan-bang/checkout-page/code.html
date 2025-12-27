@@ -1,0 +1,175 @@
+<html lang="en"><head><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-white font-sans antialiased transition-colors duration-200">
+
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JajanBang Checkout</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#D91E26", 
+                        "background-light": "#F5F5F5",
+                        "background-dark": "#121212",
+                        "card-dark": "#1E1E1E",
+                        "secondary-text": "#9CA3AF",
+                    },
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                        'xl': '1rem',
+                        '2xl': '1.5rem',
+                        '3xl': '2rem',
+                    },
+                },
+            },
+        };
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<style>
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+
+
+<div class="max-w-md mx-auto min-h-screen relative pb-32 bg-background-light dark:bg-background-dark shadow-2xl overflow-hidden">
+<header class="flex items-center justify-between px-6 pt-12 pb-4 sticky top-0 z-40 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md">
+<button class="w-10 h-10 rounded-full bg-white dark:bg-card-dark border border-gray-200 dark:border-gray-800 flex items-center justify-center hover:bg-gray-50 dark:hover:bg-gray-800 transition shadow-sm group">
+<span class="material-icons text-gray-700 dark:text-white group-hover:-translate-x-0.5 transition-transform text-lg">arrow_back</span>
+</button>
+<h1 class="font-sans font-bold text-lg text-gray-900 dark:text-white">Pemesanan</h1>
+<div class="w-10"></div>
+</header>
+<main class="px-6 mt-2 space-y-6">
+<section>
+<h2 class="font-bold text-base mb-3 text-gray-900 dark:text-white px-1">Info Pemesan</h2>
+<div class="bg-white dark:bg-card-dark rounded-2xl p-4 flex justify-between items-center shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-orange-50 dark:bg-orange-900/20 flex items-center justify-center text-orange-600 dark:text-orange-400 font-bold text-lg border border-orange-100 dark:border-orange-900/30">
+                        12
+                    </div>
+<div>
+<p class="text-[10px] text-secondary-text mb-0.5 font-bold uppercase tracking-wider">No. Meja</p>
+<h3 class="font-bold text-gray-900 dark:text-white text-lg">Budi Santoso</h3>
+</div>
+</div>
+<button class="w-9 h-9 rounded-full bg-gray-50 dark:bg-gray-800 flex items-center justify-center text-gray-500 dark:text-gray-300 hover:bg-primary hover:text-white transition-colors">
+<span class="material-icons text-sm">edit</span>
+</button>
+</div>
+</section>
+<section>
+<h2 class="font-bold text-base mb-3 text-gray-900 dark:text-white px-1">Pesanan Anda</h2>
+<div class="space-y-3">
+<div class="flex gap-4 bg-white dark:bg-card-dark p-3 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 bg-gray-200 relative">
+<img alt="Pappardelle" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUrP520nwt_CxVJa6BpZCYImXASJQyUai9ujU88x-c1DZrQjCDEdT_SEAoztXN4NT7KMXw_7Q_jkPAxZHf3BBfBqRp7EsuKK_vrDBJ-lgGTJqIA8vJmJgT4_zqEgIDSRtGhRsiXqHKLNOFtlO3--QVof87m31XsmeGNMzS-BLx5oXXh7zugX1Y7BZJAnvggN5J3Ft91EWFdilbzr9WHKOh2u_XW_NUn73n4yoXG6r09xRs39Otpsuupxqmbcmm9kVhZu5f-boH"/>
+</div>
+<div class="flex-1 flex flex-col justify-between py-1">
+<div>
+<h3 class="font-bold text-gray-900 dark:text-white leading-tight text-sm">Pappardelle with Vegetable</h3>
+<p class="text-xs text-secondary-text mt-1 line-clamp-1">Extra Spicy, No Cheese</p>
+</div>
+<div class="flex justify-between items-end">
+<span class="text-primary font-bold">$35.00</span>
+<span class="text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded-md">x1</span>
+</div>
+</div>
+</div>
+<div class="flex gap-4 bg-white dark:bg-card-dark p-3 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 bg-gray-200 relative">
+<img alt="Drink" class="w-full h-full object-cover grayscale opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUrP520nwt_CxVJa6BpZCYImXASJQyUai9ujU88x-c1DZrQjCDEdT_SEAoztXN4NT7KMXw_7Q_jkPAxZHf3BBfBqRp7EsuKK_vrDBJ-lgGTJqIA8vJmJgT4_zqEgIDSRtGhRsiXqHKLNOFtlO3--QVof87m31XsmeGNMzS-BLx5oXXh7zugX1Y7BZJAnvggN5J3Ft91EWFdilbzr9WHKOh2u_XW_NUn73n4yoXG6r09xRs39Otpsuupxqmbcmm9kVhZu5f-boH"/>
+</div>
+<div class="flex-1 flex flex-col justify-between py-1">
+<div>
+<h3 class="font-bold text-gray-900 dark:text-white leading-tight text-sm">Spicy Meatball</h3>
+<p class="text-xs text-secondary-text mt-1 line-clamp-1">Regular</p>
+</div>
+<div class="flex justify-between items-end">
+<span class="text-primary font-bold">$25.00</span>
+<span class="text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded-md">x2</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="pb-6">
+<h2 class="font-bold text-base mb-3 text-gray-900 dark:text-white px-1">Rincian Pembayaran</h2>
+<div class="border border-gray-200 dark:border-gray-700 rounded-2xl p-5 bg-white dark:bg-card-dark/50">
+<div class="flex justify-between items-center mb-3">
+<span class="text-sm text-gray-600 dark:text-gray-400">Subtotal</span>
+<span class="font-semibold text-gray-900 dark:text-white">$85.00</span>
+</div>
+<div class="flex justify-between items-center mb-4">
+<span class="text-sm text-gray-600 dark:text-gray-400">PPN 11%</span>
+<span class="font-semibold text-gray-900 dark:text-white">$9.35</span>
+</div>
+<div class="border-t border-dashed border-gray-200 dark:border-gray-700 my-4"></div>
+<div class="flex justify-between items-center">
+<span class="font-bold text-lg text-gray-900 dark:text-white">Total Bayar</span>
+<span class="font-bold text-xl text-primary">$94.35</span>
+</div>
+</div>
+</section>
+</main>
+<div class="fixed bottom-0 left-0 right-0 z-50 p-6 pt-4 bg-white/90 dark:bg-card-dark/90 backdrop-blur-lg border-t border-gray-100 dark:border-gray-800 shadow-[0_-10px_40px_rgba(0,0,0,0.05)] dark:shadow-none max-w-md mx-auto">
+<button class="w-full h-14 rounded-xl bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/30 hover:bg-red-700 active:scale-95 transition-all group">
+<span class="text-base font-bold mr-2">Bayar Sekarang</span>
+<span class="material-icons text-white/80 text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="fixed top-20 -left-12 w-64 h-64 opacity-[0.03] dark:opacity-[0.05] pointer-events-none z-0">
+<img alt="Decor" class="w-full h-full object-contain rotate-45" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBz0KBRRFfQ8CYSyo_amM-FPJ0RGrqTfs8n7jsqr1ujm7WDb3P5WEX6M1unHkX503391Pi9rbs9kAfF8is-n5rwv0703Vynil5UeqGnZsdaabbbfWaVotC77Rcl5VrvQslFP1gqNH-oeF_yU3ayrHVYaO84qQC120irZ0GgfpbBF2kHbGNNbwV7pjKvI5U3SNgvws_W45Zdwtc_YFhEMn24gN0g3eF0j022li1HiV2Bw6UT0XEF7Goju2vcT1guHRMCTZB3ScCA"/>
+</div>
+<div class="hidden fixed inset-0 z-[60] flex items-end sm:items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+<div class="bg-white dark:bg-card-dark w-full max-w-sm rounded-3xl p-6 shadow-2xl">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-xl font-bold text-gray-900 dark:text-white">Ubah Data Pemesan</h3>
+<button class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+<span class="material-icons">close</span>
+</button>
+</div>
+<form class="space-y-5">
+<div>
+<label class="block text-xs font-bold text-secondary-text mb-2 ml-1 uppercase tracking-wide">Nama Pemesan</label>
+<input class="w-full bg-gray-50 dark:bg-background-dark border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all font-medium placeholder-gray-400" type="text" value="Budi Santoso"/>
+</div>
+<div>
+<label class="block text-xs font-bold text-secondary-text mb-2 ml-1 uppercase tracking-wide">Nomor Handphone</label>
+<input class="w-full bg-gray-50 dark:bg-background-dark border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all font-medium placeholder-gray-400" type="tel" value="081234567890"/>
+</div>
+<div class="pt-2">
+<button class="w-full h-12 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/20 hover:bg-red-700 active:scale-95 transition-all" type="button">
+                        Simpan Perubahan
+                    </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</body></html>

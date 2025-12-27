@@ -23,10 +23,18 @@ class AllFoodPage extends Component
         $this->items = $foods->getAllFoods();
     }
 
+    public $term = '';
+
     #[Layout('components.layouts.page')]
     public function render()
     {
         $filteredProducts = $this->getFilteredItems();
+
+        if ($this->term) {
+            $filteredProducts = $filteredProducts->filter(function ($item) {
+                return stripos($item->name, $this->term) !== false;
+            });
+        }
 
         return view('product.all-food', [
             'filteredProducts' => $filteredProducts,

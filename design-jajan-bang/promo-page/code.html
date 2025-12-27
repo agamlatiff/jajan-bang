@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JajanBang Promo Page</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#D91E26", 
+                        "background-light": "#F5F5F5",
+                        "background-dark": "#121212",
+                        "card-dark": "#1E1E1E",
+                        "secondary-text": "#9CA3AF",
+                    },
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                        'xl': '1rem',
+                        '2xl': '1.5rem',
+                        '3xl': '2rem',
+                    },
+                },
+            },
+        };
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<style>
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-white font-sans antialiased transition-colors duration-200">
+<div class="max-w-md mx-auto min-h-screen relative pb-10 overflow-hidden bg-background-light dark:bg-background-dark shadow-2xl">
+<input class="peer hidden" id="filter-toggle" type="checkbox"/>
+<header class="flex items-center justify-between p-6 pt-12 sticky top-0 z-40 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md">
+<button class="w-10 h-10 rounded-full bg-white dark:bg-card-dark border border-gray-200 dark:border-gray-800 flex items-center justify-center hover:bg-gray-50 dark:hover:bg-gray-800 transition shadow-sm group">
+<span class="material-icons text-gray-700 dark:text-white group-hover:scale-110 transition-transform text-lg">arrow_back</span>
+</button>
+<h1 class="font-display font-bold text-2xl text-gray-900 dark:text-white">Promo</h1>
+<label class="w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center shadow-xl shadow-primary/30 hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer z-50 relative group border-4 border-white dark:border-background-dark box-content" for="filter-toggle">
+<span class="material-icons text-2xl group-hover:rotate-90 transition-transform duration-500">tune</span>
+<span class="absolute top-3.5 right-3.5 w-2.5 h-2.5 bg-yellow-400 rounded-full border border-primary"></span>
+</label>
+</header>
+<main class="px-6 pt-2 pb-12">
+<div class="relative mb-8 z-30 group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-icons text-gray-400 group-focus-within:text-primary transition-colors">search</span>
+</div>
+<input class="block w-full pl-12 pr-12 py-4 bg-white dark:bg-card-dark border-none rounded-[1.25rem] text-sm font-medium shadow-sm ring-1 ring-gray-200 dark:ring-white/10 focus:ring-2 focus:ring-primary/50 text-gray-900 dark:text-white placeholder-gray-400 transition-all outline-none" placeholder="Find your favorite food..." type="text"/>
+<div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg text-gray-400 hover:bg-gray-100 dark:hover:bg-white/10 transition-colors">
+<span class="material-icons text-lg">mic</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between mb-8 relative z-30">
+<div class="flex items-center gap-2">
+<span class="material-icons text-primary text-sm">local_offer</span>
+<span class="text-sm font-semibold text-gray-500 dark:text-gray-400">6 active deals</span>
+</div>
+<div class="text-xs text-gray-400 font-medium">Expires soon</div>
+</div>
+<div class="grid grid-cols-2 gap-x-5 gap-y-24 mt-28">
+<div class="bg-white dark:bg-card-dark rounded-[2rem] p-4 pt-14 shadow-lg hover:shadow-xl transition-all duration-300 relative group cursor-pointer hover:-translate-y-1">
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 w-28 h-28 z-10">
+<div class="absolute inset-0 bg-primary/20 rounded-full blur-2xl transform translate-y-4 scale-75 group-hover:scale-90 transition-transform duration-500"></div>
+<img alt="Pappardelle" class="relative w-full h-full object-cover rounded-full shadow-2xl group-hover:rotate-6 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUrP520nwt_CxVJa6BpZCYImXASJQyUai9ujU88x-c1DZrQjCDEdT_SEAoztXN4NT7KMXw_7Q_jkPAxZHf3BBfBqRp7EsuKK_vrDBJ-lgGTJqIA8vJmJgT4_zqEgIDSRtGhRsiXqHKLNOFtlO3--QVof87m31XsmeGNMzS-BLx5oXXh7zugX1Y7BZJAnvggN5J3Ft91EWFdilbzr9WHKOh2u_XW_NUn73n4yoXG6r09xRs39Otpsuupxqmbcmm9kVhZu5f-boH"/>
+</div>
+<div class="absolute -top-4 right-2 bg-primary text-white text-[10px] font-bold px-2.5 py-1 rounded-full z-20 shadow-md shadow-primary/30">
+                        20% OFF
+                    </div>
+<div class="text-center">
+<h3 class="font-display font-bold text-lg text-gray-900 dark:text-white leading-tight mb-1 truncate">Pappardelle</h3>
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-4 font-medium">With Vegetable</p>
+<div class="flex items-end justify-between bg-gray-50 dark:bg-white/5 p-2 rounded-xl border border-gray-100 dark:border-white/5">
+<div class="text-left flex flex-col">
+<span class="text-[10px] text-gray-400 line-through decoration-red-500/50">$45.00</span>
+<span class="text-primary font-bold text-lg">$35.00</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/30 hover:bg-red-700 transition active:scale-95">
+<span class="material-icons text-sm">add</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-card-dark rounded-[2rem] p-4 pt-14 shadow-lg hover:shadow-xl transition-all duration-300 relative group cursor-pointer hover:-translate-y-1">
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 w-28 h-28 z-10">
+<div class="absolute inset-0 bg-primary/20 rounded-full blur-2xl transform translate-y-4 scale-75 group-hover:scale-90 transition-transform duration-500"></div>
+<img alt="Ravioli" class="relative w-full h-full object-cover rounded-full shadow-2xl group-hover:-rotate-6 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0mD6EXD7TFkng1PFQ8Yk-RKnrFjgs13Mmzcx5ax0JJXD3X37qxnrKBxyDugjKbwHEDhqvK_AgP6FHUpu3kAV38mWIxV_ycPOx94phRgfn9kOumjOQSkc445iLzT9EC1373sbg4vVQ05sTodWmvoM4SkoJWy86eFym-rgH4GqS_SZmDnlt5VJx5e6jP7IQfuEfBMRhh4pBcyslNdQTH7gjrpdPkOZHsgC0KYmmbTUIaauJ9AYxAZpr1uxG17cOyNxariDaPFS_"/>
+</div>
+<div class="absolute -top-4 right-2 bg-primary text-white text-[10px] font-bold px-2.5 py-1 rounded-full z-20 shadow-md shadow-primary/30">
+                        15% OFF
+                    </div>
+<div class="text-center">
+<h3 class="font-display font-bold text-lg text-gray-900 dark:text-white leading-tight mb-1 truncate">Ravioli</h3>
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-4 font-medium">Stuffed Pesto</p>
+<div class="flex items-end justify-between bg-gray-50 dark:bg-white/5 p-2 rounded-xl border border-gray-100 dark:border-white/5">
+<div class="text-left flex flex-col">
+<span class="text-[10px] text-gray-400 line-through decoration-red-500/50">$42.00</span>
+<span class="text-primary font-bold text-lg">$35.70</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/30 hover:bg-red-700 transition active:scale-95">
+<span class="material-icons text-sm">add</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-card-dark rounded-[2rem] p-4 pt-14 shadow-lg hover:shadow-xl transition-all duration-300 relative group cursor-pointer hover:-translate-y-1">
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 w-28 h-28 z-10">
+<div class="absolute inset-0 bg-primary/20 rounded-full blur-2xl transform translate-y-4 scale-75 group-hover:scale-90 transition-transform duration-500"></div>
+<img alt="Margherita" class="relative w-full h-full object-cover rounded-full shadow-2xl group-hover:rotate-6 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6a0-d8d-99HyC5YjNanqzUBrGY7Z5ijBvNBBAWqHZXwWr1zUwaOdTrJ3wRNFG-m9sOh0NHv4WpLz59HBlmiIbK8bN8eqH6wpsf0dp7KJoATAB0pLlHHjHiOPTgY_JUDZ-fiG1882urKF5Q7IWBCGQI7n12z9MajPbDTj0Xr8PM1PGigXp4QKiyGkBNc6acYrWT9hbnWcp3oayjZRvtchLQPNtKh2vFw9EQ61WFOZkuhj-vePJcwguDttCheCkYbpuhupCMvAP"/>
+</div>
+<div class="absolute -top-4 right-2 bg-primary text-white text-[10px] font-bold px-2.5 py-1 rounded-full z-20 shadow-md shadow-primary/30">
+                        10% OFF
+                    </div>
+<div class="text-center">
+<h3 class="font-display font-bold text-lg text-gray-900 dark:text-white leading-tight mb-1 truncate">Margherita</h3>
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-4 font-medium">Basil &amp; Cheese</p>
+<div class="flex items-end justify-between bg-gray-50 dark:bg-white/5 p-2 rounded-xl border border-gray-100 dark:border-white/5">
+<div class="text-left flex flex-col">
+<span class="text-[10px] text-gray-400 line-through decoration-red-500/50">$20.00</span>
+<span class="text-primary font-bold text-lg">$18.00</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/30 hover:bg-red-700 transition active:scale-95">
+<span class="material-icons text-sm">add</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-card-dark rounded-[2rem] p-4 pt-14 shadow-lg hover:shadow-xl transition-all duration-300 relative group cursor-pointer hover:-translate-y-1">
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 w-28 h-28 z-10">
+<div class="absolute inset-0 bg-primary/20 rounded-full blur-2xl transform translate-y-4 scale-75 group-hover:scale-90 transition-transform duration-500"></div>
+<img alt="Salmon Roll" class="relative w-full h-full object-cover rounded-full shadow-2xl group-hover:-rotate-6 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBox4kE-eSaYNQ-soi18eo5Z9q9tnm2QY8haBiW6zPqWt1riyQucON-hYXuYJ_j4-uoi83BzpC_DgwzQycHvIA0XvrOIjtOpFcGNpcwnTimF6MPlnVNH2z326lxp5LfRFQA2btvSzbEKTo-NFhskvepbeZDpToyHXFVr3RFODpTLtuyx-W4yBUTxmT_3ddCvrU4f0mVjqbbg8ULHsazrd-jm6MB6Q986HT-hgB5QMOheMwkZW5-iluzjsTb_pI1DQrywINjA62F"/>
+</div>
+<div class="absolute -top-4 right-2 bg-primary text-white text-[10px] font-bold px-2.5 py-1 rounded-full z-20 shadow-md shadow-primary/30">
+                        25% OFF
+                    </div>
+<div class="text-center">
+<h3 class="font-display font-bold text-lg text-gray-900 dark:text-white leading-tight mb-1 truncate">Salmon Roll</h3>
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-4 font-medium">Fresh Salmon</p>
+<div class="flex items-end justify-between bg-gray-50 dark:bg-white/5 p-2 rounded-xl border border-gray-100 dark:border-white/5">
+<div class="text-left flex flex-col">
+<span class="text-[10px] text-gray-400 line-through decoration-red-500/50">$16.50</span>
+<span class="text-primary font-bold text-lg">$12.50</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/30 hover:bg-red-700 transition active:scale-95">
+<span class="material-icons text-sm">add</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-card-dark rounded-[2rem] p-4 pt-14 shadow-lg hover:shadow-xl transition-all duration-300 relative group cursor-pointer hover:-translate-y-1">
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 w-28 h-28 z-10">
+<div class="absolute inset-0 bg-primary/20 rounded-full blur-2xl transform translate-y-4 scale-75 group-hover:scale-90 transition-transform duration-500"></div>
+<img alt="Beef Burger" class="relative w-full h-full object-cover rounded-full shadow-2xl group-hover:rotate-6 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-mt-dUPcrG1QjvT6oDRqYN1uWjQMOiuRRK8k4Vx-G2_LMeoXgtN4uamqO-liJHTB9_pk4DAduIwXERkViDf6pnLLgDjoyozhi4XyjmEKPb7gtKRP_3A5LyTGYHZAuHOlqbnkOoXScFgNpf8AdpEYK-TfmhF4X-PXKyF4F4OOceEbny4xwgsN0eFO1V-A9vLfDh6JwRRL5U0Y3TBkc6NK0P5eq25RApu9ItqLA4JAfG3Mx6herskaj_pnMLMkHgTZuTa91P7Is"/>
+</div>
+<div class="absolute -top-4 right-2 bg-primary text-white text-[10px] font-bold px-2.5 py-1 rounded-full z-20 shadow-md shadow-primary/30">
+                        30% OFF
+                    </div>
+<div class="text-center">
+<h3 class="font-display font-bold text-lg text-gray-900 dark:text-white leading-tight mb-1 truncate">Double Beef</h3>
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-4 font-medium">Extra Cheese</p>
+<div class="flex items-end justify-between bg-gray-50 dark:bg-white/5 p-2 rounded-xl border border-gray-100 dark:border-white/5">
+<div class="text-left flex flex-col">
+<span class="text-[10px] text-gray-400 line-through decoration-red-500/50">$22.00</span>
+<span class="text-primary font-bold text-lg">$15.40</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/30 hover:bg-red-700 transition active:scale-95">
+<span class="material-icons text-sm">add</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-card-dark rounded-[2rem] p-4 pt-14 shadow-lg hover:shadow-xl transition-all duration-300 relative group cursor-pointer hover:-translate-y-1">
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 w-28 h-28 z-10">
+<div class="absolute inset-0 bg-primary/20 rounded-full blur-2xl transform translate-y-4 scale-75 group-hover:scale-90 transition-transform duration-500"></div>
+<img alt="Indonesian Special" class="relative w-full h-full object-cover rounded-full shadow-2xl group-hover:-rotate-6 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3mAC3ihQmwQGlxqK6PU6M6dfntmejs8Xqrumi6IVY9QeBaxKdUb-SbDniiLkz8f2ruok4UWeGx_2SNPgnoUibAbJuVJhILZReco38KWReiUkHzEryWInSSOrRn5HA2TbunEtyTCQ1iXuHNsjXl25Qtd84Si7BFyQ00NuernCUJ1uII62f2Z3jB7_IjxxTH1gDTe8SRjBiZ-f8Lbd3hnNMROOXUaU22upR0Xm7x86vmfG4VABGrC8N0DZEqaQcY_t_snJIrg6s"/>
+</div>
+<div class="absolute -top-4 right-2 bg-primary text-white text-[10px] font-bold px-2.5 py-1 rounded-full z-20 shadow-md shadow-primary/30">
+                        50% OFF
+                    </div>
+<div class="text-center">
+<h3 class="font-display font-bold text-lg text-gray-900 dark:text-white leading-tight mb-1 truncate">Lokal Special</h3>
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-4 font-medium">Rice Platter</p>
+<div class="flex items-end justify-between bg-gray-50 dark:bg-white/5 p-2 rounded-xl border border-gray-100 dark:border-white/5">
+<div class="text-left flex flex-col">
+<span class="text-[10px] text-gray-400 line-through decoration-red-500/50">$60.00</span>
+<span class="text-primary font-bold text-lg">$30.00</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/30 hover:bg-red-700 transition active:scale-95">
+<span class="material-icons text-sm">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed top-32 -left-8 w-40 h-40 opacity-10 pointer-events-none z-0">
+<img alt="Leaf decor" class="w-full h-full object-contain rotate-12" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBz0KBRRFfQ8CYSyo_amM-FPJ0RGrqTfs8n7jsqr1ujm7WDb3P5WEX6M1unHkX503391Pi9rbs9kAfF8is-n5rwv0703Vynil5UeqGnZsdaabbbfWaVotC77Rcl5VrvQslFP1gqNH-oeF_yU3ayrHVYaO84qQC120irZ0GgfpbBF2kHbGNNbwV7pjKvI5U3SNgvws_W45Zdwtc_YFhEMn24gN0g3eF0j022li1HiV2Bw6UT0XEF7Goju2vcT1guHRMCTZB3ScCA"/>
+</div>
+<div class="fixed bottom-12 -right-8 w-48 h-48 opacity-10 pointer-events-none z-0">
+<img alt="Leaf decor" class="w-full h-full object-contain -rotate-45" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV_kd7wCxBSKmJK1hLDCsQX8gIRd8PitDmIe4gzREraRsO6R418meJI1XJK6OZGakIOx-euUiax1AOFp7XUmsEPpT8u6WH42UibkTZBbf4crQo9U2XCJFZzxj_T7rn6S3KXDTz9nGqnObwRpEvDsNS5PzJ_Pto_48wD_Xi_Vp3Wq2E8Um7gPcIknhVFGcz5yawD57MX0b6jmTOsRRxXxEtfJZxX2DgDaeYg95wOLevcAI_ea0Ai-2LPHbjbPApOts_rhm8h7KD"/>
+</div>
+<label class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 opacity-0 pointer-events-none peer-checked:opacity-100 peer-checked:pointer-events-auto transition-all duration-300 ease-out" for="filter-toggle"></label>
+<div class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white dark:bg-card-dark z-50 rounded-t-[2.5rem] p-6 pb-10 translate-y-full peer-checked:translate-y-0 transition-transform duration-500 cubic-bezier(0.32, 0.72, 0, 1) shadow-2xl h-[85vh] flex flex-col">
+<div class="w-12 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full mx-auto mb-6 shrink-0"></div>
+<div class="flex items-center justify-between mb-8 shrink-0 px-2">
+<h2 class="font-display font-bold text-2xl text-gray-900 dark:text-white">Filter Search</h2>
+<button class="text-sm font-semibold text-gray-400 hover:text-primary transition-colors">Reset</button>
+</div>
+<div class="overflow-y-auto scrollbar-hide flex-1 px-2 pb-6 space-y-10">
+<div>
+<h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4 pl-1">Categories</h3>
+<div class="flex flex-wrap gap-2.5">
+<label class="cursor-pointer">
+<input checked="" class="peer hidden" name="category" type="radio"/>
+<span class="inline-block px-5 py-2.5 rounded-xl bg-gray-50 dark:bg-white/5 text-gray-600 dark:text-gray-300 font-medium text-sm border border-transparent hover:border-gray-200 dark:hover:border-white/10 peer-checked:bg-primary peer-checked:text-white peer-checked:shadow-lg peer-checked:shadow-primary/30 peer-checked:font-semibold transition-all">All Food</span>
+</label>
+<label class="cursor-pointer">
+<input class="peer hidden" name="category" type="radio"/>
+<span class="inline-block px-5 py-2.5 rounded-xl bg-gray-50 dark:bg-white/5 text-gray-600 dark:text-gray-300 font-medium text-sm border border-transparent hover:border-gray-200 dark:hover:border-white/10 peer-checked:bg-primary peer-checked:text-white peer-checked:shadow-lg peer-checked:shadow-primary/30 peer-checked:font-semibold transition-all">Burger</span>
+</label>
+<label class="cursor-pointer">
+<input class="peer hidden" name="category" type="radio"/>
+<span class="inline-block px-5 py-2.5 rounded-xl bg-gray-50 dark:bg-white/5 text-gray-600 dark:text-gray-300 font-medium text-sm border border-transparent hover:border-gray-200 dark:hover:border-white/10 peer-checked:bg-primary peer-checked:text-white peer-checked:shadow-lg peer-checked:shadow-primary/30 peer-checked:font-semibold transition-all">Pizza</span>
+</label>
+<label class="cursor-pointer">
+<input class="peer hidden" name="category" type="radio"/>
+<span class="inline-block px-5 py-2.5 rounded-xl bg-gray-50 dark:bg-white/5 text-gray-600 dark:text-gray-300 font-medium text-sm border border-transparent hover:border-gray-200 dark:hover:border-white/10 peer-checked:bg-primary peer-checked:text-white peer-checked:shadow-lg peer-checked:shadow-primary/30 peer-checked:font-semibold transition-all">Asian</span>
+</label>
+<label class="cursor-pointer">
+<input class="peer hidden" name="category" type="radio"/>
+<span class="inline-block px-5 py-2.5 rounded-xl bg-gray-50 dark:bg-white/5 text-gray-600 dark:text-gray-300 font-medium text-sm border border-transparent hover:border-gray-200 dark:hover:border-white/10 peer-checked:bg-primary peer-checked:text-white peer-checked:shadow-lg peer-checked:shadow-primary/30 peer-checked:font-semibold transition-all">Dessert</span>
+</label>
+<label class="cursor-pointer">
+<input class="peer hidden" name="category" type="radio"/>
+<span class="inline-block px-5 py-2.5 rounded-xl bg-gray-50 dark:bg-white/5 text-gray-600 dark:text-gray-300 font-medium text-sm border border-transparent hover:border-gray-200 dark:hover:border-white/10 peer-checked:bg-primary peer-checked:text-white peer-checked:shadow-lg peer-checked:shadow-primary/30 peer-checked:font-semibold transition-all">Mexican</span>
+</label>
+</div>
+</div>
+<div>
+<h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4 pl-1">Sort By</h3>
+<div class="space-y-1">
+<label class="flex items-center justify-between p-3 -mx-2 rounded-2xl hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer transition-colors group">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-orange-50 dark:bg-orange-500/10 text-orange-500 flex items-center justify-center">
+<span class="material-icons text-xl">local_fire_department</span>
+</div>
+<span class="font-medium text-gray-900 dark:text-white">Popular</span>
+</div>
+<input checked="" class="w-5 h-5 text-primary border-2 border-gray-300 focus:ring-primary focus:ring-offset-0 bg-transparent" name="sort" type="radio"/>
+</label>
+<label class="flex items-center justify-between p-3 -mx-2 rounded-2xl hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer transition-colors group">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-blue-50 dark:bg-blue-500/10 text-blue-500 flex items-center justify-center">
+<span class="material-icons text-xl">new_releases</span>
+</div>
+<span class="font-medium text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">Newest</span>
+</div>
+<input class="w-5 h-5 text-primary border-2 border-gray-300 focus:ring-primary focus:ring-offset-0 bg-transparent" name="sort" type="radio"/>
+</label>
+<label class="flex items-center justify-between p-3 -mx-2 rounded-2xl hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer transition-colors group">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-green-50 dark:bg-green-500/10 text-green-500 flex items-center justify-center">
+<span class="material-icons text-xl">attach_money</span>
+</div>
+<span class="font-medium text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">Price: Low to High</span>
+</div>
+<input class="w-5 h-5 text-primary border-2 border-gray-300 focus:ring-primary focus:ring-offset-0 bg-transparent" name="sort" type="radio"/>
+</label>
+</div>
+</div>
+<div>
+<h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-6 pl-1">Price Range</h3>
+<div class="relative pt-6 pb-2 px-1">
+<div class="h-1.5 bg-gray-100 dark:bg-white/10 rounded-full w-full">
+<div class="absolute h-1.5 bg-primary rounded-full left-[20%] right-[30%]"></div>
+</div>
+<div class="absolute top-1/2 -translate-y-1/2 left-[20%] w-6 h-6 bg-white rounded-full border-[3px] border-primary shadow-lg cursor-grab active:cursor-grabbing hover:scale-110 transition-transform"></div>
+<div class="absolute top-1/2 -translate-y-1/2 right-[30%] w-6 h-6 bg-white rounded-full border-[3px] border-primary shadow-lg cursor-grab active:cursor-grabbing hover:scale-110 transition-transform"></div>
+</div>
+<div class="flex justify-between mt-6">
+<div class="text-center px-5 py-2.5 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 min-w-[80px]">
+<span class="text-[10px] uppercase text-gray-400 block mb-0.5">Min</span>
+<span class="font-bold text-gray-900 dark:text-white">$20</span>
+</div>
+<div class="text-center px-5 py-2.5 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 min-w-[80px]">
+<span class="text-[10px] uppercase text-gray-400 block mb-0.5">Max</span>
+<span class="font-bold text-gray-900 dark:text-white">$85</span>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-6 border-t border-gray-100 dark:border-white/5 shrink-0 px-2 mt-auto">
+<label class="block w-full py-4 rounded-2xl bg-primary text-white text-center font-bold text-lg shadow-xl shadow-primary/30 hover:bg-red-700 hover:shadow-2xl transition-all cursor-pointer active:scale-[0.98]" for="filter-toggle">
+                    Show 6 results
+                </label>
+</div>
+</div>
+</div>
+
+</body></html>

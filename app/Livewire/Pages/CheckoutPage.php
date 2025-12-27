@@ -33,11 +33,10 @@ class CheckoutPage extends Component
 
     public $paymentToken;
 
-    #[On('saved-user-info')]
     public function mount()
     {
-        $this->name = session('name');
-        $this->phone = session('phone');
+        $this->refreshUserInfo();
+
         if (empty($this->cartItems)) {
             return redirect()->route('payment.cart');
         }
@@ -46,6 +45,13 @@ class CheckoutPage extends Component
         session(['payment_token' => $this->paymentToken]);
 
         $this->updateTotals();
+    }
+
+    #[On('saved-user-info')]
+    public function refreshUserInfo()
+    {
+        $this->name = session('name');
+        $this->phone = session('phone');
     }
 
     #[Layout('components.layouts.app')]
