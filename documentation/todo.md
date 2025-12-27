@@ -96,8 +96,39 @@
 
 #### 3. Admin Panel (Filament)
 
-- [ ] Custom Theme/Colors for Admin Panel
-- [ ] Dashboard Widgets Redesign
+**🎨 Design/UX Improvements**
+
+- [x] Custom Theme/Colors - Match JajanBang primary branding (Red #D91E26)
+- [x] Custom Login Page with JajanBang logo and branding
+- [x] Dark Mode toggle (persistent preference)
+- [x] Navigation Group Icons - Better icon choices for menu items
+- [ ] Dashboard Layout - Reorder widgets for better visual hierarchy
+
+**⚙️ Functionality Improvements**
+
+- [x] Quick Actions Widget - "New Order", "Add Menu Item", "Generate Report"
+- [x] Order Status Filter - Filter transactions by order_status + bulk actions
+- [x] Inline Edit for Order Status - Update status directly from table
+- [ ] Search Improvements - Global search across transactions, food items, categories
+- [x] Date Range Filters - Filter Revenue/Orders by custom date ranges
+- [ ] Notification Bell - Real-time alerts for new/pending orders
+- [ ] Food Stock Management - Toggle availability (in_stock boolean)
+- [ ] Export Data - PDF/Excel for transactions and reports
+
+**📊 Business/Analytics Improvements**
+
+- [ ] Daily/Weekly/Monthly Revenue Chart - Interactive ApexCharts widget
+- [x] Best Selling Items Widget - Top 5 with quantity + revenue
+- [ ] Hourly Sales Heatmap - Peak hour analysis for staffing
+- [ ] Customer Insights - Repeat customers, avg order value
+- [ ] Low Stock Alerts - For food items running low (if inventory enabled)
+- [ ] Profit Margin Report - Calculate per-item profitability
+
+**🔐 Security/Access**
+
+- [ ] Role-Based Access (Admin vs Staff) - Restrict sensitive data
+- [ ] Activity Log - Track who modified what
+- [ ] Two-Factor Authentication (2FA)
 
 ---
 

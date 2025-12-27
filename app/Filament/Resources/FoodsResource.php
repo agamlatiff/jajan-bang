@@ -15,7 +15,13 @@ class FoodsResource extends Resource
 {
     protected static ?string $model = Foods::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-cake';
+
+    protected static ?string $navigationGroup = 'Menu';
+
+    protected static ?string $navigationLabel = 'Daftar Menu';
+
+    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {

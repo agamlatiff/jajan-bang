@@ -4,21 +4,35 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\TransactionItemsResource\Pages\ListTransactionItems;
 use App\Filament\Resources\TransactionResource\Pages;
+use App\Enums\OrderStatus;
 use App\Models\Transaction;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\Action;
+use Filament\Tables\Actions\BulkAction;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Select;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Contracts\Support\Htmlable;
 
 class TransactionResource extends Resource
 {
     protected static ?string $model = Transaction::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-currency-dollar';
+    protected static ?string $navigationIcon = 'heroicon-o-banknotes';
+
+    protected static ?string $navigationGroup = 'Pesanan';
+
+    protected static ?string $navigationLabel = 'Transaksi';
+
+    protected static ?int $navigationSort = 1;
 
     public static function getRecordTitle(?Model $record): string|Htmlable|null
     {
@@ -95,11 +109,23 @@ class TransactionResource extends Resource
                 Tables\Columns\TextColumn::make('payment_status')
                     ->label("Payment Status")
                     ->badge()
-                    ->colors([
-                        "success" => fn($state): bool => in_array($state, ["SUCCESS", "PAID", "SETTLED"]),
-                        "warning" => fn($state): bool => $state === "PENDING",
-                        "danger" => fn($state): bool => in_array($state, ["FAILED", "EXPIRED"])
-                    ]),
+                    ->color(fn(string $state): string => match ($state) {
+                        'SETTLED', 'PAID', 'SUCCESS' => 'success',
+                        'PENDING' => 'warning',
+                        'FAILED', 'EXPIRED' => 'danger',
+                        default => 'gray',
+                    }),
+                Tables\Columns\SelectColumn::make('order_status')
+                    ->label("Order Status")
+                    ->options([
+                        'pending' => 'Pending',
+                        'confirmed' => 'Confirmed',
+                        'preparing' => 'Preparing',
+                        'ready' => 'Ready',
+                        'delivered' => 'Delivered',
+                        'cancelled' => 'Cancelled',
+                    ])
+                    ->selectablePlaceholder(false),
                 Tables\Columns\TextColumn::make('subtotal')
                     ->label("Subtotal")
                     ->numeric()
@@ -124,8 +150,52 @@ class TransactionResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                SelectFilter::make('payment_status')
+                    ->options([
+                        'PENDING' => 'Pending',
+                        'SETTLED' => 'Settled/Paid',
+                        'FAILED' => 'Failed',
+                        'EXPIRED' => 'Expired',
+                    ])
+                    ->label('Payment Status'),
+                SelectFilter::make('order_status')
+                    ->options([
+                        'pending' => 'Pending',
+                        'confirmed' => 'Confirmed',
+                        'preparing' => 'Preparing',
+                        'ready' => 'Ready',
+                        'delivered' => 'Delivered',
+                        'cancelled' => 'Cancelled',
+                    ])
+                    ->label('Order Status'),
+                Filter::make('created_at')
+                    ->form([
+                        DatePicker::make('from')->label('Dari Tanggal'),
+                        DatePicker::make('until')->label('Sampai Tanggal'),
+                    ])
+                    ->query(function (Builder $query, array $data): Builder {
+                        return $query
+                            ->when(
+                                $data['from'],
+                                fn(Builder $query, $date): Builder => $query->whereDate('created_at', '>=', $date),
+                            )
+                            ->when(
+                                $data['until'],
+                                fn(Builder $query, $date): Builder => $query->whereDate('created_at', '<=', $date),
+                            );
+                    })
+                    ->indicateUsing(function (array $data): array {
+                        $indicators = [];
+                        if ($data['from'] ?? null) {
+                            $indicators['from'] = 'Dari: ' . $data['from'];
+                        }
+                        if ($data['until'] ?? null) {
+                            $indicators['until'] = 'Sampai: ' . $data['until'];
+                        }
+                        return $indicators;
+                    }),
             ])
+            ->defaultSort('created_at', 'desc')
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Action::make("See transaction")
@@ -137,6 +207,28 @@ class TransactionResource extends Resource
                     )
             ])
             ->bulkActions([
+                BulkAction::make('updateStatus')
+                    ->label('Update Status')
+                    ->icon('heroicon-o-arrow-path')
+                    ->form([
+                        Select::make('order_status')
+                            ->label('Status Baru')
+                            ->options([
+                                'pending' => 'Pending',
+                                'confirmed' => 'Confirmed',
+                                'preparing' => 'Preparing',
+                                'ready' => 'Ready',
+                                'delivered' => 'Delivered',
+                                'cancelled' => 'Cancelled',
+                            ])
+                            ->required(),
+                    ])
+                    ->action(function (Collection $records, array $data): void {
+                        $records->each(function ($record) use ($data) {
+                            $record->update(['order_status' => $data['order_status']]);
+                        });
+                    })
+                    ->deselectRecordsAfterCompletion(),
             ]);
     }
 

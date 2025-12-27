@@ -20,8 +20,16 @@ class BestSellersWidget extends BaseWidget
     return $table
       ->query(
         Foods::query()
-          ->select('foods.*', DB::raw('COALESCE(SUM(transaction_items.quantity), 0) as total_sold'))
+          ->select(
+            'foods.*',
+            DB::raw('COALESCE(SUM(transaction_items.quantity), 0) as total_sold'),
+            DB::raw('COALESCE(SUM(transaction_items.quantity * transaction_items.price), 0) as total_revenue')
+          )
           ->leftJoin('transaction_items', 'foods.id', '=', 'transaction_items.foods_id')
+          ->leftJoin('transactions', function ($join) {
+            $join->on('transaction_items.transactions_id', '=', 'transactions.id')
+              ->where('transactions.payment_status', 'SETTLED');
+          })
           ->groupBy('foods.id')
           ->orderByDesc('total_sold')
           ->limit(5)
@@ -52,11 +60,18 @@ class BestSellersWidget extends BaseWidget
           ->color('success')
           ->suffix(' pcs'),
 
+        Tables\Columns\TextColumn::make('total_revenue')
+          ->label('Pendapatan')
+          ->money('IDR')
+          ->color('primary')
+          ->weight('bold'),
+
         Tables\Columns\IconColumn::make('is_promo')
           ->label('Promo')
           ->boolean(),
       ])
       ->heading('🔥 Menu Terlaris')
+      ->description('Top 5 menu dengan penjualan tertinggi')
       ->paginated(false);
   }
 }

@@ -130,7 +130,7 @@
                                     wire:click="$dispatch('open-modal', 'detail-modal-{{ $favorite->id }}')" 
                                     class="flex cursor-pointer items-center rounded-2xl bg-white p-3 shadow-sm transition hover:shadow-md dark:bg-card-dark"
                                 >
-                                    <div class="flex-shrink-0 h-20 w-20 overflow-hidden rounded-xl bg-gray-100">
+                                    <div class="shrink-0 h-20 w-20 overflow-hidden rounded-xl bg-gray-100">
                                         <img 
                                             alt="{{ $favorite->name }}" 
                                             class="h-full w-full object-cover" 
