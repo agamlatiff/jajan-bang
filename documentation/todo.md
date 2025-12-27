@@ -127,8 +127,8 @@
 **🔐 Security/Access**
 
 - [x] Role-Based Access (Admin vs Staff) - Restrict sensitive data
-- [ ] Activity Log - Track who modified what
-- [ ] Two-Factor Authentication (2FA)
+- [x] Activity Log - Track who modified what
+- [x] Two-Factor Authentication (2FA)
 
 ---
 

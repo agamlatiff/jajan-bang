@@ -6,10 +6,21 @@ use App\Enums\OrderStatus;
 use App\Enums\PaymentStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class Transaction extends Model
 {
     use HasFactory;
+    use LogsActivity;
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['order_status', 'payment_status'])
+            ->logOnlyDirty()
+            ->setDescriptionForEvent(fn(string $eventName) => "Transaksi {$eventName}");
+    }
 
     protected $fillable = [
         'invoice_number',

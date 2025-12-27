@@ -5,11 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class Foods extends Model
 {
     use HasFactory;
     use Search;
+    use LogsActivity;
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['name', 'price', 'is_promo', 'is_available'])
+            ->logOnlyDirty()
+            ->setDescriptionForEvent(fn(string $eventName) => "Menu {$eventName}");
+    }
 
     protected $fillable = [
         'name',
