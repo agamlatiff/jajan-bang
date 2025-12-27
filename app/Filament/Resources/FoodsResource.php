@@ -46,7 +46,14 @@ class FoodsResource extends Resource
                     ])
 
                     ->columnSpanFull(),
+                Forms\Components\TextInput::make('cost_price')
+                    ->label('Harga Modal')
+                    ->numeric()
+                    ->default(0)
+                    ->prefix("Rp")
+                    ->columnSpanFull(),
                 Forms\Components\TextInput::make('price')
+                    ->label('Harga Jual')
                     ->required()
                     ->numeric()
                     ->columnSpanFull()

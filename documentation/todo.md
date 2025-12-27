@@ -119,10 +119,10 @@
 
 - [x] Daily/Weekly/Monthly Revenue Chart - Interactive ApexCharts widget
 - [x] Best Selling Items Widget - Top 5 with quantity + revenue
-- [ ] Hourly Sales Heatmap - Peak hour analysis for staffing
-- [ ] Customer Insights - Repeat customers, avg order value
-- [ ] Low Stock Alerts - For food items running low (if inventory enabled)
-- [ ] Profit Margin Report - Calculate per-item profitability
+- [x] Hourly Sales Heatmap - Peak hour analysis for staffing (Implemented as Hourly Bar Chart)
+- [x] Customer Insights - Repeat customers, avg order value
+- [x] Low Stock Alerts - For food items running low (Implemented as Unavailable Items Widget)
+- [x] Profit Margin Report - Calculate per-item profitability
 
 **🔐 Security/Access**
 

@@ -16,6 +16,7 @@ class Foods extends Model
         'description',
         'image',
         'price',
+        'cost_price',
         'price_afterdiscount',
         'percent',
         'is_promo',
