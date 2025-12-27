@@ -29,7 +29,7 @@ class OrderTrackingPage extends Component
       return;
     }
 
-    $this->transaction = Transaction::with('items')
+    $this->transaction = Transaction::with('items.food')
       ->where('code', $this->invoiceNumber)
       ->first();
 

@@ -86,13 +86,13 @@
 
 **Payment Status**
 
-- [ ] **Success Page** (`design-jajan-bang/success-page`)
-- [ ] **Failed Page** (`design-jajan-bang/failed-page`)
+- [x] **Success Page** (`design-jajan-bang/success-page`)
+- [x] **Failed Page** (`design-jajan-bang/failed-page`)
 
 **Order Management**
 
-- [ ] **Track Order Page** (`design-jajan-bang/track-order-page`)
-- [ ] **Kitchen Page** (`design-jajan-bang/kitchen-page`)
+- [x] **Track Order Page** (`design-jajan-bang/track-order-page`)
+- [x] **Kitchen Page** (`design-jajan-bang/kitchen-page`)
 
 #### 3. Admin Panel (Filament)
 

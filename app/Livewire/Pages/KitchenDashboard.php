@@ -10,19 +10,32 @@ use Livewire\Component;
 #[Layout('layouts.app')]
 class KitchenDashboard extends Component
 {
-  public string $filter = 'active'; // active, all, today
+  public string $filter = 'active'; // active, pending, confirmed, preparing, ready, delivered
 
   public function getOrdersProperty()
   {
-    $query = Transaction::with('items')
+    $query = Transaction::with('items.food')
       ->where('payment_status', 'paid')
-      ->orderBy('created_at', 'desc');
+      ->orderBy('created_at', 'asc'); // Oldest first for kitchen
 
-    return match ($this->filter) {
-      'active' => $query->active()->get(),
-      'today' => $query->today()->get(),
-      default => $query->limit(50)->get(),
-    };
+    if ($this->filter === 'active') {
+      return $query->active()->get();
+    }
+
+    return $query->where('order_status', $this->filter)->get();
+  }
+
+  public function getCountsProperty()
+  {
+    $baseQuery = Transaction::where('payment_status', 'paid');
+
+    return [
+      'active' => (clone $baseQuery)->active()->count(),
+      'pending' => (clone $baseQuery)->where('order_status', OrderStatus::PENDING->value)->count(),
+      'confirmed' => (clone $baseQuery)->where('order_status', OrderStatus::CONFIRMED->value)->count(),
+      'preparing' => (clone $baseQuery)->where('order_status', OrderStatus::PREPARING->value)->count(),
+      'ready' => (clone $baseQuery)->where('order_status', OrderStatus::READY->value)->count(),
+    ];
   }
 
   public function updateStatus(int $orderId, string $status)
