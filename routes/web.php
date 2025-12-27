@@ -47,11 +47,24 @@ Route::middleware([CheckTableNumber::class, 'cart.expiry'])->controller(Transact
 
 Route::post("/payment/webhook", [TransactionController::class, "handleWebhook"])->name("payment.webhook");
 
+// Export routes (Admin only - protected by Filament auth)
+Route::prefix('export')->middleware('auth')->name('export.')->group(function () {
+    Route::get('/transactions/pdf', [\App\Http\Controllers\ExportController::class, 'transactionsPdf'])->name('transactions.pdf');
+    Route::get('/transactions/csv', [\App\Http\Controllers\ExportController::class, 'transactionsCsv'])->name('transactions.csv');
+    Route::get('/best-sellers/pdf', [\App\Http\Controllers\ExportController::class, 'bestSellersPdf'])->name('best-sellers.pdf');
+});
+
 // Order Tracking (accessible without table number)
 Route::get("/track-order/{invoice?}", OrderTrackingPage::class)->name("order.track");
 
-// Kitchen Dashboard (staff only - TODO: add auth middleware)
-Route::get("/kitchen", KitchenDashboard::class)->name("kitchen.dashboard");
+// Kitchen Dashboard (PIN protected)
+Route::middleware('kitchen.auth')->group(function () {
+    Route::get("/kitchen", KitchenDashboard::class)->name("kitchen.dashboard");
+});
+Route::post("/kitchen/auth", function () {
+    // Handled by middleware
+    return redirect()->route('kitchen.dashboard');
+})->name("kitchen.auth");
 
 Route::controller(QRController::class)->group(function () {
     Route::post("/store-qr-result", "storeResult")->name("product.scan.store");

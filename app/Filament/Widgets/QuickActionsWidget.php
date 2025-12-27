@@ -34,9 +34,17 @@ class QuickActionsWidget extends Widget
       [
         'label' => 'Dashboard Dapur',
         'icon' => 'heroicon-o-fire',
-        'url' => route('kitchen'),
+        'url' => route('kitchen.dashboard'),
         'color' => 'warning',
         'description' => 'Buka tampilan dapur',
+        'external' => true,
+      ],
+      [
+        'label' => 'Export Transaksi (PDF)',
+        'icon' => 'heroicon-o-document-arrow-down',
+        'url' => route('export.transactions.pdf'),
+        'color' => 'danger',
+        'description' => 'Download laporan PDF',
         'external' => true,
       ],
     ];

@@ -136,9 +136,9 @@
 
 ### Pending Features (On Hold for Redesign)
 
-- [ ] Kitchen Auth Middleware
-- [ ] Implementation of `KitchenAuthMiddleware` (PIN/Login protection)
-- [ ] Export to PDF/Excel (Analytics)
+- [x] Kitchen Auth Middleware
+- [x] Implementation of `KitchenAuthMiddleware` (PIN/Login protection)
+- [x] Export to PDF/Excel (Analytics)
 
 ---
 
