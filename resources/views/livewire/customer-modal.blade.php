@@ -1,4 +1,4 @@
-<x-modal :title="'Lengkapi Pemesanan'" :showClose="false">
+<x-modal :title="'Lengkapi Pemesanan'" :showClose="false" :allowClose="false">
     @section("content")
         <form 
             wire:submit.prevent="saveUserInfo"
@@ -6,6 +6,9 @@
                 name: @entangle('name'),
                 phone: @entangle('phone'),
                 errors: { name: '', phone: '' },
+                get isValid() {
+                    return this.name && this.name.length >= 2 && this.phone && /^(\+62|62|0)8[1-9][0-9]{6,10}$/.test(this.phone.replace(/[\s-]/g, ''));
+                },
                 validateName() {
                     if (!this.name || this.name.length < 2) {
                         this.errors.name = 'Nama minimal 2 karakter';
@@ -36,21 +39,27 @@
                 }
             }"
         >
-            <div class="mb-6 mt-4 space-y-4">
+            <p class="text-xs text-black-40 mb-4">
+                <span class="text-red-500">*</span> Wajib diisi sebelum memesan
+            </p>
+            <div class="mb-6 space-y-4">
                 <div class="flex flex-col space-y-1">
                     <label
                         class="text-xs font-semibold text-black-50"
                         for="name"
                     >
-                        Nama Pemesan
+                        Nama Pemesan <span class="text-red-500">*</span>
                     </label>
                     <input
                         :class="errors.name ? 'border-red-500' : 'border-black-30'"
                         class="rounded-lg border px-2 py-1.5"
                         type="text"
                         name="name"
+                        required
+                        minlength="2"
                         x-model="name"
                         @blur="validateName()"
+                        @input="validateName()"
                         wire:model.live="name"
                     />
                     <span x-show="errors.name" x-text="errors.name" class="text-xs text-red-500"></span>
@@ -65,15 +74,17 @@
                         class="text-xs font-semibold text-black-50"
                         for="phone"
                     >
-                        Nomor Handphone
+                        Nomor Handphone <span class="text-red-500">*</span>
                     </label>
                     <input
                         :class="errors.phone ? 'border-red-500' : 'border-black-30'"
                         class="rounded-lg border px-2 py-1.5"
                         type="tel"
                         name="phone"
+                        required
                         x-model="phone"
                         @blur="validatePhone()"
+                        @input="validatePhone()"
                         wire:model.live="phone"
                         placeholder="08xxxxxxxxxx"
                     />
@@ -88,17 +99,21 @@
 
             <div class="flex items-center justify-between">
                 <button
-                    x-on:click="open = false"
+                    x-on:click="if(isValid) open = false"
+                    :disabled="!isValid"
                     type="button"
-                    class="cursor-pointer rounded-full bg-primary-10 px-5 py-2 font-semibold text-primary-60 outline-none hover:bg-primary-20"
+                    :class="isValid ? 'bg-primary-10 text-primary-60 hover:bg-primary-20 cursor-pointer' : 'bg-gray-100 text-gray-400 cursor-not-allowed'"
+                    class="rounded-full px-5 py-2 font-semibold outline-none transition-all"
                 >
                     Kembali
                 </button>
                 <button
                     @click="if(!validate()) $event.preventDefault()"
                     x-on:click="if(validate()) open = false"
+                    :disabled="!isValid"
                     type="submit"
-                    class="cursor-pointer rounded-full bg-primary-50 px-5 py-2 font-semibold text-white hover:bg-primary-60"
+                    :class="isValid ? 'bg-primary-50 hover:bg-primary-60 cursor-pointer' : 'bg-primary-30 cursor-not-allowed'"
+                    class="rounded-full px-5 py-2 font-semibold text-white transition-all"
                 >
                     <span class="flex items-center gap-1.5">
                         Terapkan
@@ -112,3 +127,4 @@
         </form>
     @endsection
 </x-modal>
+

@@ -31,19 +31,33 @@ class DetailPage extends Component
     public function addToCart()
     {
         $cartItems = session('cart_items', []);
+        $foodId = $this->food->id;
 
-        $existingItemIndex = collect($cartItems)->search(fn($item) => $item['id'] === $this->food->id);
+        // Find existing item index safely
+        $existingItemIndex = false;
+        foreach ($cartItems as $index => $item) {
+            if (isset($item['id']) && $item['id'] == $foodId) {
+                $existingItemIndex = $index;
+                break;
+            }
+        }
 
         if ($existingItemIndex !== false) {
             $cartItems[$existingItemIndex]['quantity'] += 1;
         } else {
-            $cartItems[] = array_merge(
-                (array)$this->food,
-                [
-                    'quantity' => 1,
-                    'selected' => true,
-                ]
-            );
+            $cartItems[] = [
+                'id' => $this->food->id,
+                'name' => $this->food->name,
+                'description' => $this->food->description,
+                'image' => $this->food->image,
+                'price' => $this->food->price,
+                'price_afterdiscount' => $this->food->price_afterdiscount,
+                'percent' => $this->food->percent,
+                'is_promo' => $this->food->is_promo,
+                'categories_id' => $this->food->categories_id,
+                'quantity' => 1,
+                'selected' => true,
+            ];
         }
 
         session(['cart_items' => $cartItems]);

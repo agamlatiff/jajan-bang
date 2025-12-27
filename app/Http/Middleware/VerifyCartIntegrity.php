@@ -28,6 +28,12 @@ class VerifyCartIntegrity
     $pricesChanged = false;
 
     foreach ($cartItems as $item) {
+      // Skip if item doesn't have required 'id' key
+      if (!isset($item['id'])) {
+        $pricesChanged = true;
+        continue;
+      }
+
       $food = $foods->get($item['id']);
 
       if (!$food) {

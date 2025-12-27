@@ -1,10 +1,14 @@
+@props(['allowClose' => true, 'showClose' => true])
+
 <div
     x-cloak
     x-show="open"
     x-transition.opacity.duration.200ms
     x-trap.inert.noscroll="open"
-    @keydown.esc.window="open = false"
-    x-on:click.self="open = false"
+    @if($allowClose)
+        @keydown.esc.window="open = false"
+        x-on:click.self="open = false"
+    @endif
     class="fixed inset-0 z-30 flex items-center justify-center bg-black-100/50 font-poppins"
     role="dialog"
     aria-modal="true"
@@ -40,3 +44,4 @@
         @yield("content")
     </div>
 </div>
+

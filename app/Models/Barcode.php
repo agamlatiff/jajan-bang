@@ -14,6 +14,8 @@ class Barcode extends Model
         'token',
         'image',
         'is_active',
+        'qr_value',
+        'users_id',
     ];
 
     public function users()

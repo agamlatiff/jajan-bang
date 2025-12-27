@@ -35,7 +35,7 @@
 
 ### Phase 3: Payment Integration
 
-- [x] Midtrans payment gateway setup
+- [x] Xendit payment gateway setup
 - [x] Snap token generation
 - [x] Payment methods (Cash, QRIS, Transfer)
 - [x] Success/failure callbacks
@@ -164,6 +164,47 @@
 - [x] Trend indicators (+/-% vs yesterday/last month)
 - [ ] Export to PDF/Excel
 
+### UI Redesign (See `pages-overview.md` for sections)
+
+#### Customer Pages
+
+- [ ]   1. Home Page - Header, Search, Promo Slider, Banner, Favorites
+- [ ]   2. All Food Page - Title Nav, Food Grid, Filter Modal
+- [ ]   3. Promo Page - Title Nav, Promo Grid
+- [ ]   4. Favorite Page - Title Nav, Favorite Grid
+- [ ]   5. Detail Page - Image, Info Card, Action Buttons
+- [ ]   6. Cart Page - Items List, Actions, Empty State
+- [ ]   7. Checkout Page - Customer Info, Order Items, Price Summary
+- [ ]   8. Scan QR Page - QR Scanner UI
+
+#### Payment Status Pages
+
+- [ ]   9. Success Page - Icon, Message, Track Button
+- [ ]   10. Failure Page - Icon, Message, Retry Button
+
+#### Order Management Pages
+
+- [ ]   11. Order Tracking - Search, Timeline, Details
+- [ ]   12. Kitchen Dashboard - Stats, Filters, Order Cards
+
+#### Admin Panel (Filament)
+
+- [ ] Dashboard Widgets - Stats, Revenue Chart, Orders, Best Sellers
+- [ ] Category Resource - List, Create/Edit
+- [ ] Foods Resource - List, Form, Filters
+- [ ] Transaction Resource - List, Detail, Status Actions
+- [ ] Barcode Resource - List, QR Generator
+
+#### Shared Components
+
+- [ ] Food Card - Image, Badge, Price
+- [ ] Main Menu - Bottom Navigation
+- [ ] Page Title Nav - Back, Title, Filter
+- [ ] Customer Modal - Form UI
+- [ ] Filter Modal - Category Selection
+- [ ] Menu Item List - Quantity, Checkbox
+- [ ] Toast Component - Notifications
+
 ### Low Priority
 
 #### Advanced Features
@@ -201,7 +242,7 @@
 - **Key Achievements**:
     - Full-stack Laravel 11 + Livewire 3
     - Filament v4 admin panel
-    - Midtrans payment integration
+    - Xendt payment integration
     - QR code system
     - Session-based cart
     - Mobile-first responsive design

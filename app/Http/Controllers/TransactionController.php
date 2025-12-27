@@ -157,7 +157,7 @@ class TransactionController extends Controller
             $transaction->total = $subTotal + $ppn;
             $transaction->external_id = $uuid;
             $transaction->code = $transactionCode;
-            $transaction->payment_status = $invoice->getStatus();
+            $transaction->payment_status = strtolower((string) $invoice->getStatus());
             $transaction->save();
 
             foreach ($cartItems as $cartItem) {

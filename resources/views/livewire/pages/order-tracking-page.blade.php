@@ -3,7 +3,8 @@
         :title="'Lacak Pesanan'" 
         wire:key="{{ str()->random(50) }}" 
         :hasBack="true"
-        :hasFilter="false" />
+        :hasFilter="false"
+        :backUrl="route('home')" />
 
     <div class="container py-6">
         <!-- Search Form -->

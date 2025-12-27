@@ -10,6 +10,7 @@ class PageTitleNav extends Component
     public bool $showModal = false;
     public bool $hasBack = false;
     public bool $hasFilter = true;
+    public ?string $backUrl = null;
 
     protected $listeners = ['showModal' => 'openModal'];
 

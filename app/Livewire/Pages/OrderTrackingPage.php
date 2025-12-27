@@ -6,7 +6,7 @@ use App\Models\Transaction;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
-#[Layout('layouts.app')]
+#[Layout('components.layouts.app')]
 class OrderTrackingPage extends Component
 {
   public ?Transaction $transaction = null;
@@ -30,7 +30,7 @@ class OrderTrackingPage extends Component
     }
 
     $this->transaction = Transaction::with('items')
-      ->where('invoice_number', $this->invoiceNumber)
+      ->where('code', $this->invoiceNumber)
       ->first();
 
     if (!$this->transaction) {
